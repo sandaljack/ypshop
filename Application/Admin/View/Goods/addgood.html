@@ -1,0 +1,167 @@
+<extend name="Index:base" />
+
+<!-- title模块 -->
+<block name="title"><title>商品管理</title></block>
+
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">商品管理</a></li>
+                <li class="am-active">商品发布</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span>商品发布
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tpl-block">
+
+                    <div class="am-g tpl-amazeui-form">
+                        <div class="tpl-form-body tpl-form-line">
+                            <!--添加商品表单 -->
+                            <form class="am-form am-form-horizontal" method="post" action="{:U('addGood')}" enctype="multipart/form-data">
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">商品类别 <span class="tpl-form-line-small-title"></span></label>
+                                    <div id="selected" class="am-u-sm-4 am-u-end" name="1">
+                                        <select class="firstsortId" name="firstsortId">
+                                            <option value="">所有类别</option>
+                                            <foreach name="firstsortData" item="v">
+                                                <option value="{$v.id}">{$v.name}</option>
+                                            </foreach>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">商品名字</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="name" id="user-name" placeholder="请输入商品名字">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">衣长</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="length" id="user-name" placeholder="请输入产品衣长的参数">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">袖长</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="seevelength" id="user-name" placeholder="请输入产品袖长的参数">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">材质</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="material" id="user-name" placeholder="请输入产品材质的参数">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">领型</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="collar" id="user-name" placeholder="请输入产品领型的参数">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">袖型</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="sleevetype" id="user-name" placeholder="请输入产品参数:袖型">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">商品浏览图片 <span class="tpl-form-line-small-title"></span></label>
+                                    <div class="am-u-sm-9">
+                                        <div class="am-form-group am-form-file">
+                                            <button type="button" class="am-btn am-btn-danger am-btn-sm">
+                                                <i class="am-icon-cloud-upload"></i> 添加商品浏览图片
+                                            </button>
+                                            <input id="doc-form-file" name='pictures1[]' type="file" multiple>
+                                            <small>可多选图片进行上传</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-weibo" class="am-u-sm-3 am-form-label">商品详情图片 <span class="tpl-form-line-small-title"></span></label>
+                                    <div class="am-u-sm-9">
+                                        <div class="am-form-group am-form-file">
+                                            <button type="button" class="am-btn am-btn-success am-btn-sm">
+                                                <i class="am-icon-cloud-upload"></i> 添加商品详情图片
+                                            </button>
+                                            <input id="doc-form-file" name='pictures2[]' type="file" multiple>
+                                            <small>可多选图片进行上传</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label"></label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <textarea disabled="" class="" rows="5" id="user-intro" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<!-- javascript模块 -->
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+        //每当#selected里的.firstsortId下拉框数值发生变化时，触发下面的JS代码
+        $('#selected').on('change', '.firstsortId', function () {
+            
+            var sortid = $(this).val();
+
+            //post方式的ajax
+            $.post(
+                '__APP__/Admin/Addgoods/ajaxData',
+
+                {id: sortid},
+
+                function (data) {
+
+                    var str = '<select name="secondsortId"><option value="">所有类别</option>';
+
+                    for (var i = 0; i < data.length; i++) {
+           
+                    str += '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+
+                    }   
+                    str += '</select>';
+
+                    //先清除.firstsortId后面的所有select
+                    $('.firstsortId').nextAll('select').remove();
+
+                    //再在.firstortId后添加str
+                    $('.firstsortId').after(str);
+                },
+                'json'
+            );
+        });
+           
+            
+    </script>
+</block>
+

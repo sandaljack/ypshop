@@ -1,0 +1,116 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>添加权限</title></block>
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">权限管理</a></li>
+                <li><a href="#">权限列表</a></li>
+                <li class="am-active">添加权限</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 添加权限
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <button id="back" class="am-btn am-btn-primary" style="margin-left:20px">返回</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g tpl-amazeui-form">
+                        <div class="tpl-form-body tpl-form-line">
+                            <!--添加商品表单 -->
+                            <form class="am-form am-form-horizontal" method="post" action="{:U('addrule')}">
+                                
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">权限名称</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="title" id="user-name" placeholder="请输入权限名称">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">权限标识</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="name" id="user-name" placeholder="请输入权限标识">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">附加条件</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="condition" id="user-name"  placeholder="请输入附加条件">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">是否启用</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                         <div class="tpl-switch">
+                                            <input type="checkbox" name="status" class="ios-switch bigswitch tpl-switch-btn" checked value="1" />
+                                            <div class="tpl-switch-btn-view changestatus" style="margin-top:5px">
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-phone" class="am-u-sm-3 am-form-label">所属模块 <span class="tpl-form-line-small-title"></span></label>
+                                    <div id="selected" class="am-u-sm-4 am-u-end" name="1">
+                                        <select class="firstsortId" name="classify">
+                                            <option value="0">所有类别</option>
+                                                <option value="1">首页设置</option>
+                                                <option value="2">用户管理</option>
+                                                <option value="3">分类管理</option>
+                                                <option value="4">商品管理</option>
+                                                <option value="5">订单管理</option>
+                                                <option value="6">权限管理</option>
+                                                <option value="7">广告管理</option>
+                                                <option value="8">管理员管理</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="javascript">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+    //点击返回
+    $('#back').click(function() {
+        location.href = '__APP__/Admin/Authrule/index';
+    });
+    //获取状态是否启用
+    $('.changestatus').each(function() {
+        $(this).click(function() {
+            if ($(this).siblings('input[name="status"]').attr('value') == '0') {
+                $(this).siblings('input[name="status"]').val('1');
+            } else {
+                $(this).siblings('input[name="status"]').val('0');
+            }   
+        });
+    });
+    </script>
+</block>

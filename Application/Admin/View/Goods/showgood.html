@@ -1,0 +1,232 @@
+<extend name="Index:base" />
+
+<block name="title"><title>商品管理</title></block>
+
+<block name="main">
+        <?php $page = ($_GET['p']);?>
+        <div class="tpl-content-wrapper">
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">商品管理</a></li>
+                <li class="am-active">商品信息</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span>商品信息
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-5">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a href="__APP__/Admin/Addgoods/addgood"><button type="button" class="am-btn am-btn-default am-btn-success am-btn-xs"><span class="am-icon-plus"></span> 新增</button></a>
+                                    <a href="__APP__/Admin/Showgoods/showgood"><button type="button" class="am-btn am-btn-default am-btn-success am-btn-xs"><span class="am-icon-plus"></span>清空搜索条件</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="get" action="{:U('Showgoods/showgood')}">
+                            <div class="am-u-sm-12 am-u-md-2">
+                                <div id="firstsort" class="am-form-group">
+                                    <select value="{$postData['firstsortId']}" name="firstsortId" class="firstsortId">
+                                        <option value="0">一级分类</option>
+                                        <foreach name="firstsortData" item="v">
+                                            <option <?=@$postData['firstsortId'] == $v['id']?'selected':''?> value="{$v.id}">{$v.name}</option>
+                                        </foreach>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div style="margin-left:-20px" class="am-u-sm-12 am-u-md-2">
+                                <div id="secondsort" class="am-form-group">
+                                    <select value="{$postData['secondsortId']}" name="secondsortId" class="secondsortId">
+                                        <option value="0">二级分类</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-3">
+                                <div class="am-input-group am-input-group-sm">
+                                    <input type="text" name="searchData" value="{$postData['searchData']}" placeholder="请输入要搜索的关键字" class="am-form-field">
+                                    <span class="am-input-group-btn">
+                                        <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search"></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                
+                    <div id="goodsDiv" class="am-g">
+                        <div id="myDiv" class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr class="am-text-center">
+                                            <th class="am-text-center">ID</th>
+                                            <th class="table-title am-text-center">商品图片</th>
+                                            <th class="table-type am-text-center">商品名字</th>
+                                            <th class="table-author am-text-center">状态</th>
+                                            <th class="table-date am-text-center">购买量</th>
+                                            <th class="table-date am-text-center">点击量</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mytbody">                                      
+                                        <foreach name="goodsData" item="v">
+                                            <tr class="am-text-center">
+                                                <td class="table-id">{$v.id}</td>
+                                                <td><img src="__PUBLIC__/{$v.pic_path}" width="50"></td>
+                                                <td class="am-hide-sm-only" title="{$v.goods_name}">{$v.goods_name|subtext=8}</td>
+                                                <td class="am-hide-sm-only myselect">
+                                                    <select num="{$v.id}">
+                                                      <option <?=$v['goods_status']==0?'selected':''?> value="0">已下架</option>
+                                                      <option <?=$v['goods_status']==1?'selected':''?> value="1">已上架</option>
+                                                      <option <?=$v['goods_status']==2?'selected':''?> value="2">在售中</option>
+                                                    </select>
+                                                </td>
+                                                <td class="am-hide-sm-only">{$v.buynum}</td>
+                                                <td class="am-hide-sm-only">{$v.clicknum}</td>
+                                                <td>
+                                                    <div class="am-btn-toolbar">
+                                                        <div class="am-btn-group am-btn-group-xs">
+                                                            <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><a href='__APP__/Admin/Changegoods/changeGood/id/{$v.id}/page/{$page}'><span class="am-icon-pencil-square-o"></span>修改商品信息</a></button>
+                                                            <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><a href='__APP__/Admin/Goodstore/showstore/id/{$v.id}'><span class="am-icon-copy"></span>库存信息</a></button>
+                                                            <button num="{$v.id}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only myDelete"><a href="javascript:;">删除</a></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                                </form>
+                                <div class="am-cf">
+                                    <div class="col-xs-12 col-md-12 col-lg-12 b-page"> {$btn}</div>
+                                </div>
+                            <hr>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+
+        //每当#selected里的.firstsort下拉框数值发生变化时，触发下面的JS代码
+        $('#firstsort').on('change', '.firstsortId', function () {
+
+            //拿到一级分类下拉框的值
+            var firstsortId = $(this).val();
+
+            //然后根据一级分类下拉框的值用ajax查询二级分类的字段
+            $.post(
+
+                '__APP__/Admin/Showgoods/secondSort',
+
+                {id: firstsortId},
+
+                function (data) {
+
+                    var str = '<select name="secondsortId" class="secondsortId"><option value="0">二级类别</option>';
+
+                    for (var i = 0; i < data.length; i++) {
+
+                    str += '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+
+                    }   
+                    str += '</select>';
+
+                    //先清除.firstsortId后面的所有select
+                    $('.secondsortId').remove();
+                    // console.log($('.firstsortId'));
+
+                    $('#secondsort').append(str);
+                },
+                'json'
+            );
+
+        });
+
+        $('.am-text-center').on('change', '.myselect select', function () {
+
+            var that = $(this);
+
+            var status = that.val();
+
+            var goodId = that.attr('num');
+
+            $.post(
+
+                '__APP__/Admin/Showgoods/changeStatus',
+
+                {id: goodId, statu: status},
+
+                function (data) {
+
+                    alert(data['msg']);
+
+                },
+
+                'json'
+            );
+        });
+
+        //通过ajax删除商品信息
+        $('.myDelete').on('click', function ()
+        {
+            var msg = '你确定要删除这条商品信息么';
+            
+            //点击删除按钮时，弹出一个是否确定删除的弹窗
+            if (confirm(msg) == true) {
+
+                var goodid = $(this).attr('num');
+
+                var that = $(this);
+
+                $.post(
+
+                    '__APP__/Admin/Showgoods/goodsDelete',
+
+                    {id: goodid},
+
+                    function (data) {
+
+                        if (data == 1) {
+
+                            alert('删除成功');
+
+                            that.parent().parent().parent().parent().remove();
+
+                        } else {
+
+                            alert('删除失败');
+                        }
+                    },
+
+                    'json'
+                );
+
+            }    
+
+        });
+
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+    </script>
+</block>
+
+
+

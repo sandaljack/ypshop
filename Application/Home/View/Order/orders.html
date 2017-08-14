@@ -1,0 +1,920 @@
+<!-- 继承base模板 -->
+<extend name="Index:base" />
+
+<!-- title模块 -->
+<block name="title"><title>订单管理</title></block>
+
+	
+
+<!-- link模块 -->
+<block name="link">
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/css/orstyle.css" rel="stylesheet" type="text/css">
+</block>
+
+<!-- script模块 -->
+<block name="script">
+		<script src="__PUBLIC__/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="__PUBLIC__/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+</block>
+
+
+<!-- 内容模块 -->
+<block name="main">
+			
+            <div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="__APP__/Home">首页</a></li>
+                                <li class="qc"><a href="javascript:;">闪购</a></li>
+                                <li class="qc"><a href="javascript:;">限时抢</a></li>
+                                <li class="qc"><a href="javascript:;">团购</a></li>
+                                <li class="qc last"><a href="javascript:;">大包装</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+			<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-order">
+
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">订单管理</strong> / <small>Order</small></div>
+						</div>
+						<hr/>
+
+						<div class=" am-tabs-d2 am-margin" data-am-tabs>
+
+							<ul class="am-avg-sm-5 am-tabs-nav am-nav am-nav-tabs">
+								<li style="background:lightblue;"><a id="allorder">所有订单</a></li>
+								<li><a id="waitpay">待付款</a></li>
+								<li><a id="waitgo">待发货</a></li>
+								<li><a id="waitback">待收货</a></li>
+								<li><a id="waitcomm">待评价</a></li>
+							</ul>
+
+
+							<script>
+
+								$('#allorder').click(function () {
+
+									location.href = "__APP__/Home/Order/orders"
+								});
+
+								$('#waitpay').click(function () {
+
+									location.href="__APP__/Home/Order/ordersa";
+								});
+
+								$('#waitgo').click(function () {
+
+									location.href="__APP__/Home/Order/ordersb";
+								});
+
+								$('#waitback').click(function () {
+
+									location.href="__APP__/Home/Order/ordersc";
+								});
+
+								$('#waitcomm').click(function () {
+
+									location.href="__APP__/Home/Order/ordersd";
+								});
+								
+							</script>
+
+							<div class="am-tabs-bd">
+								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											<!--不同状态订单-->
+											<div class="order-status3">
+								
+								<foreach name="res" item="val">
+											
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;" id="order">{$val.orders_num}</a></div>
+													<span>成交时间：{$val.addtime} </span>
+
+													<!--    <em>店铺：小桔灯</em>-->
+												</div>
+
+								
+												<div class="order-content">
+													<div class="order-left">
+													
+													
+									<foreach name="rest" key="k" item="val2">
+									<if condition="$val['orders_num'] eq $val2[0]['orders_num'] ">
+									<foreach name="val2" item="val3">
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="__PUBLIC__/{$val3.pic_path}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{$val3.goods_name}</p>
+																			<p class="info-little">颜色分类：{$val3.color}
+																				<br/>尺码：{$val3.size}</p>
+																			
+																			
+																			
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{$val3.price}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{$val3.buynum}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+																	<a href="refund.html">退款/退货</a>
+																</div>
+															</li>
+														</ul>
+													</foreach>
+											
+													</div>
+													<div class="order-right">
+														<li id="chg" class="td td-amount">
+															<div class="item-amount">
+																合计：{$val.total}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+											<if condition="$val['status'] eq 1">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">等待买家付款</p>
+																	<p class="order-info"><a href="#">取消订单</a></p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<a href="###">
+																<div oid="{$val['orders_num']}" class="am-btn am-btn-danger anniu anniu1">
+																	一键支付</div></a>
+															</li>
+														</div>
+
+									
+												</if>
+
+
+
+												<if condition="$val['status'] eq 2">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">买家已付款</p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu anniu2">
+																	提醒发货</div>
+															</li>
+														</div>
+
+		<!-- ======================================== -->
+
+												</if>
+
+
+
+												<if condition="$val['status'] eq 3">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">卖家已发货</p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																	<p class="order-info"><a href="#">延长收货</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<div oid="{$val['orders_num']}"  class="am-btn am-btn-danger anniu anniu3">
+																	确认收货</div>
+															</li>
+														</div>
+
+												</if>
+
+
+
+												<if condition="$val['status'] eq 4">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">交易成功</p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<a href="javascript:;">
+																	<div oid="{$val['orders_num']}" class="am-btn am-btn-danger anniu anniu4">
+																		评价商品</div>
+																</a>
+															</li>
+														</div>
+
+												</if>
+
+
+												<if condition="$val['status'] eq 5">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus"></p>
+																	<p class="order-info"><a href="logistics.html"></a></p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+													    </div>
+															</li>
+															<li class="td td-change">
+																<a href="##">
+																	<div id="anniu" class="am-btn am-btn-danger anniu">
+																		交易取消</div>
+																</a>
+															</li>
+														</div>
+													</if>
+
+
+													<if condition="$val['status'] eq 6">
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">交易成功</p>
+																	<p class="order-info"><a href="{:U('Order/orderInfo', array('num'=>$val['orders_num']) )}">订单详情</a></p>
+																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+													    </div>
+															</li>
+															<li class="td td-change">
+																<a href="##">
+																	<div oid="{$val['orders_num']}" class="am-btn am-btn-danger anniu anniu6">
+																		查看评价</div>
+																</a>
+															</li>
+														</div>
+												</if>
+
+													</div>
+											
+											</if>
+											</foreach>
+												</div>
+											<!-- 所有订单遍历结束 -->
+											</foreach>
+											</div>
+											{$btn}
+										</div>
+									</div>
+								</div>
+
+
+	<!-- 支付JQ -->
+	<script>
+
+			$('.anniu1').each(function () {
+
+				$(this).click(function () {
+
+					var oid = $(this).attr('oid');
+
+					location.href = "__APP__/Home/Pay/payOrder/oid/"+oid+"."+"{$Think.config.URL_HTML_SUFFIX}";
+				})
+
+			});
+
+		</script>
+
+
+
+	<!-- 提醒发货JQ -->
+	<script>
+
+			$('.anniu2').each(function () {
+
+				$(this).click(function () {
+
+					alert('已提醒商家为您发货！');
+
+				});
+			});
+			
+	</script>
+
+
+
+	<!-- 确认收货JQ -->
+	<script>
+			$('.anniu3').each(function () {
+
+				$(this).click(function () {
+
+					// var num = $(this).index();
+
+					var order = $(this).attr('oid');
+
+					
+					$.post(
+
+						"{:U('Order/confirm')}",
+
+						{num: order},
+
+						function (data) {
+
+							if (data == 1) {
+								alert('确认收货成功！');
+								location.href = '{:U("Order/orders")}';
+							} else {
+								alert('服务器繁忙，请稍后再试！');
+							}
+						},
+						'json'
+					);
+				});
+			});
+	</script>
+
+
+	<!-- 评价商品JQ -->
+	<script>
+
+		$('.anniu4').each(function () {
+
+
+			$(this).click(function () {
+
+			var oid = $(this).attr('oid');
+
+			location.href = "__APP__/Home/Comment/CommentGoods/oid/"+oid+"."+"{$Think.config.URL_HTML_SUFFIX}";
+		});
+
+		});
+
+	</script>
+
+
+	<!-- 查看评价JQ -->
+	<script>
+
+			$('.anniu6').each(function () {
+
+
+				$(this).click(function () {
+
+				var oid = $(this).attr('oid');
+
+				location.href = "__APP__/Home/Comment/Commentshow/oid/"+oid+"."+"{$Think.config.URL_HTML_SUFFIX}";
+			});
+
+			});
+		</script>
+
+
+								<!-- 待付款 -->
+								<div class="am-tab-panel am-fade" id="tab2">
+
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											<div class="order-status1">
+										<!-- 遍历待付款 -->
+										<foreach name="res1" item="v1">
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;">{$v1.orders_num}</a></div>
+													<span>成交时间：{$v1.addtime}</span>
+													
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+														
+
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="__PUBLIC__/{$v1.pic_path}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{$v1.goods_name} </p>
+																			<p class="info-little">颜色分类：{$v1.color}
+																				<br/>{$v1.size}</p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{$v1.price}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{$v1.buynum}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+
+																</div>
+															</li>
+														</ul>
+
+													</div>
+													<div class="order-right">
+														<li class="td td-amount">
+															<div class="item-amount">
+																{$v1.total}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">等待买家付款</p>
+																	<p class="order-info"><a href="#">取消订单</a></p>
+
+																</div>
+															</li>
+															<li class="td td-change">
+																<a href="pay.html">
+																<div class="am-btn am-btn-danger anniu">
+																	一键支付</div></a>
+															</li>
+														</div>
+													</div>
+
+												</div>
+												<!-- 待付款遍历结束 -->
+											</foreach>
+											</div>
+										{$btn1}
+										</div>
+
+									</div>
+								</div>
+
+
+								<!-- 待发货 -->
+								<div class="am-tab-panel am-fade" id="tab3">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+    					 		<div class="order-main">
+										<div class="order-list">
+											<div class="order-status3">
+											
+												<!-- 遍历待付款 -->
+										<foreach name="res2" item="v2">
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;">{$v2.orders_num}</a></div>
+													<span>成交时间：{$v2.addtime}</span>
+													
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+														
+
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="__PUBLIC__/{$v2.pic_path}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{$v2.goods_name} </p>
+																			<p class="info-little">颜色分类：{$v2.color}
+																				<br/>{$v2.size}</p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{$v2.price}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{$v2.buynum}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+
+																</div>
+															</li>
+														</ul>
+
+													</div>
+													<div class="order-right">
+														<li class="td td-amount">
+															<div class="item-amount">
+																{$v2.total}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+														<div class="move-right">
+															<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">买家已付款</p>
+																	<p class="order-info"><a href="orderInfo.html">订单详情</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu">
+																	提醒发货</div>
+															</li>
+														</div>
+														</div>
+													</div>
+
+												</div>
+												<!-- 待付款遍历结束 -->
+											</foreach>
+											</div>
+										</div>
+
+									</div>
+								</div>
+									
+
+
+								<div class="am-tab-panel am-fade" id="tab4">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											<div class="order-status3">
+											
+												<!-- 遍历待付款 -->
+										<foreach name="res3" item="v3">
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;">{$v3.orders_num}</a></div>
+													<span>成交时间：{$v3.addtime}</span>
+													
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+														
+
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="__PUBLIC__/image{$v3.pic_path}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{$v3.goods_name} </p>
+																			<p class="info-little">颜色分类：{$v3.color}
+																				<br/>{$v3.size}</p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{$v3.price}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{$v3.buynum}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+
+																</div>
+															</li>
+														</ul>
+
+													</div>
+													<div class="order-right">
+														<li class="td td-amount">
+															<div class="item-amount">
+																{$v3.total}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">卖家已发货</p>
+																	<p class="order-info"><a href="orderInfo.html">订单详情</a></p>
+																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																	<p class="order-info"><a href="#">延长收货</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<div class="am-btn am-btn-danger anniu">
+																	确认收货</div>
+															</li>
+														</div>
+														
+													</div>
+
+												</div>
+												<!-- 待付款遍历结束 -->
+											</foreach>
+											</div>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="am-tab-panel am-fade" id="tab5">
+									<div class="order-top">
+										<div class="th th-item">
+											<td class="td-inner">商品</td>
+										</div>
+										<div class="th th-price">
+											<td class="td-inner">单价</td>
+										</div>
+										<div class="th th-number">
+											<td class="td-inner">数量</td>
+										</div>
+										<div class="th th-operation">
+											<td class="td-inner">商品操作</td>
+										</div>
+										<div class="th th-amount">
+											<td class="td-inner">合计</td>
+										</div>
+										<div class="th th-status">
+											<td class="td-inner">交易状态</td>
+										</div>
+										<div class="th th-change">
+											<td class="td-inner">交易操作</td>
+										</div>
+									</div>
+
+									<div class="order-main">
+										<div class="order-list">
+											<div class="order-status3">
+											
+												<!-- 遍历待付款 -->
+										<foreach name="res4" item="v4">
+												<div class="order-title">
+													<div class="dd-num">订单编号：<a href="javascript:;">{$v4.orders_num}</a></div>
+													<span>成交时间：{$v4.addtime}</span>
+													
+												</div>
+												<div class="order-content">
+													<div class="order-left">
+														
+
+														<ul class="item-list">
+															<li class="td td-item">
+																<div class="item-pic">
+																	<a href="#" class="J_MakePoint">
+																		<img src="__PUBLIC__/{$v4.pic_path}" class="itempic J_ItemImg">
+																	</a>
+																</div>
+																<div class="item-info">
+																	<div class="item-basic-info">
+																		<a href="#">
+																			<p>{$v4.goods_name} </p>
+																			<p class="info-little">颜色分类：{$v4.color}
+																				<br/>{$v4.size}</p>
+																		</a>
+																	</div>
+																</div>
+															</li>
+															<li class="td td-price">
+																<div class="item-price">
+																	{$v4.price}
+																</div>
+															</li>
+															<li class="td td-number">
+																<div class="item-number">
+																	<span>×</span>{$v4.buynum}
+																</div>
+															</li>
+															<li class="td td-operation">
+																<div class="item-operation">
+
+																</div>
+															</li>
+														</ul>
+
+													</div>
+													<div class="order-right">
+														<li class="td td-amount">
+															<div class="item-amount">
+																{$v4.total}
+																<p>含运费：<span>10.00</span></p>
+															</div>
+														</li>
+														<div class="move-right">
+															<li class="td td-status">
+																<div class="item-status">
+																	<p class="Mystatus">交易成功</p>
+																	<p class="order-info"><a href="orderInfo.html">订单详情</a></p>
+																	<p class="order-info"><a href="logistics.html">查看物流</a></p>
+																</div>
+															</li>
+															<li class="td td-change">
+																<a href="commentlist.html">
+																	<div class="am-btn am-btn-danger anniu">
+																		评价商品</div>
+																</a>
+															</li>
+														</div>
+														
+													</div>
+
+												</div>
+												<!-- 待付款遍历结束 -->
+											</foreach>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+		
+			</div>
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="{:U('Home/Person/person')}">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="javascript:;">个人资料</a>
+						<ul>
+							<li> <a href="{:U('Home/Person/infor')}">个人信息</a></li>
+							<li> <a href="{:U('Home/Person/password')}">安全设置</a></li>
+							<li> <a href="{:U('Home/Address/showAddress')}">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的交易</a>
+						<ul>
+							<li class="active"><a href="{:U('Home/Order/orders')}">订单管理</a></li>
+							<li> <a href="javascript:;">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的资产</a>
+						<ul>
+							<li> <a href="javascript:;">优惠券 </a></li>
+							<li> <a href="javascript:;">红包</a></li>
+							<li> <a href="javascript:;">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="javascript:;">我的小窝</a>
+						<ul>
+							<li > <a href="{:U('Person/collection')}">收藏</a></li>
+							<li> <a href="javascript:;">足迹</a></li>
+							<li> <a href="{:U('Comment/commentShow')}">评价</a></li>
+							<li> <a href="javascript:;">消息</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</aside>
+		</div>
+</block>
+
+<block name="javascript">
+	<script>
+		//显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+	</script>
+
+</block>

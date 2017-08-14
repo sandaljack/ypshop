@@ -1,0 +1,403 @@
+<extend name="Index:base" />
+<block name="title"><title>购物车</title></block>
+<block name="link">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/css/cartstyle.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/css/optstyle.css" rel="stylesheet" type="text/css" />
+	<!-- 加的 -->
+	<link href="__PUBLIC__/css/jsstyle.css" rel="stylesheet" type="text/css" />
+</block>
+<block name="script">
+	<!-- 加的 -->
+	<script type="text/javascript" src="__PUBLIC__/js/address.js"></script>
+</block>	
+<block name="main">	
+			<div class="clear"></div>	
+
+			<!--购物车 -->
+			<div class="am-g" >
+                       <div class="am-u-sm-9 am-u-sm-centered" >
+
+						<table class="am-table table-main"  width="960px" border="1" cellspacing="0" cellpadding="0" >
+							<thead>
+							  	<tr style="background:#f5f5f5"  height="50">
+	
+									<td></td>
+									<td>商品信息</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>单价</td>
+									<td>数量</td>
+									<td>金额</td>
+									<td>操作</td>
+						    	</tr>
+						    </thead>
+						
+							<tbody>
+							<empty name="list">
+								<tr><td colspan="5">哎呀，您的购物篮中还没有商品呢～<a href="{:U('List/list')}">快去购物吧！</a></td></tr>
+							</empty>
+							<foreach name="list" item="v" key="k">
+								<tr class="cartr" id="tr{$k}" gid="{$v.goods_id}" nums="{$v.nums}" color="{$v.color}" size="{$v.size}">
+										<td class="goods_id" style="display:none">{$v.goods_id}</td>
+								        <td height="50"><input type="checkbox"  name="checkbox" id="checkbox{$k}"  /></td>
+								        <td height="50" style=""><img src="__PUBLIC__/{$v.pic_path}" class="" style="height:85px;"></td>
+								        <td height="50" width="140px" style="">{$v.goods_name}</td>
+								        <td height="50" width="80">颜色:{$v.color}</td>
+								        <td height="50" width="80">尺码:{$v.size}</td>
+								        <td height="50" width="80" ><span class="price">{$v.price}</span></td>
+								        <td height="50" width="150"  class="data" style="position:relative">
+								            <input class="min" name="" type="button" value="-" />
+								            <input type="text" orinums="{$v.nums}" gid="{$v.goods_id}" color="{$v.color}" size="{$v.size}" store="{$v.store}" class="input_val" name="input_val" value="{$v.nums}" style="width:30px"/>
+								            <input class="add" name="" type="button" value="+" />
+								            <span class="jixian" style="color:red;top:45px;left:3px;display:none;position:absolute;height:0">已到库存极限</span>
+								        </td>
+								        <td height="50" width="100" ><div><span class="subPrice">{$v['price'] * $v['nums']}</span></div></td>
+								        <td height="50" width="100"  ><a class="delete"  href="javascript:;">删除</a></td>
+
+								</tr>
+							</foreach>
+							</tbody>
+						</table>
+					
+						<span width="84" height="30" align="center" style="margin:10px"><input type="checkbox" name="allcheckbox" id="allselect"/> 全选</span> <a id="deleteAll" href="javascript:;">删除</a>
+						<div class="subTotal" style="float:right;margin-right:20px" >
+						商品总价：（不含运费和优惠扣减）<span id="total">0.00</span>元</div>
+						<br>
+						 <empty name="Think.session.homeInfo">
+							 <div class="control" style="float:right;margin-right:10px;margin-top:10px">
+								<div class="tc-btn createAddr theme-login am-btn am-btn-danger">去结算</div>
+							</div>
+						<else/>
+							<div class="" style="float:right;margin-right:10px;margin-top:10px">
+								<div id="pay" class="tc-btn createAddr  am-btn am-btn-danger">去结算</div>
+							</div>	
+						</empty>
+						
+					
+			<!-- 登录模块 -->
+			<div class="theme-popover-mask"></div>
+			<div class="theme-popover">
+				<!--标题 -->
+				<div class="am-cf am-padding">
+					<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">您尚未登录</strong> <small></small></div>
+				</div>
+				<hr/><br />
+				<div class="am-u-md-12">
+					<font size="6px" style="margin:0px 150px">登录商城</font><br /><br /><br />
+					<form class="am-form am-form-horizontal" action="{:U('Login/doLogin', array('go'=>pay))}" method="post">	
+						<div class="am-form-group">
+							<label for="user" class="am-form-label">用户名</label>
+							<div class="am-form-content">
+								<input type="text" name="name" id="user" placeholder="邮箱/手机/用户名">
+							</div>
+						</div>
+						<div class="am-form-group">
+							<label for="password" class="am-form-label">密码</label>
+							<div class="am-form-content">
+								<input type="password" name="pass" id="password" placeholder="请输入密码">
+							</div>
+						</div>
+						<div class="am-form-group">
+							<div class="am-form-content">
+							<label for="remember-me"><input  name="rem" id="remember-me" type="checkbox">记住密码</label>
+							<a href="{:U('Login/forgetpass')}" class="am-fr">忘记密码</a>
+							<a href="{:U('Register/register')}" class="zcnext am-fr am-btn-default">注册</a>
+							</div>
+						</div>	
+						<div class="am-form-group">
+							<div class="am-u-sm-9 am-u-sm-push-3"><br />
+								<button class="am-btn am-btn-danger" style="margin-left:20px">登录</button>
+								<button id="cancel" type="button"class="am-btn am-btn-danger close">取消</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+			<div class="clear"></div>	
+</block>
+
+
+<block name="javascript">
+	<script>
+		$(function(){
+		  //商品加减计算
+		  $(".min").click(function(){
+		    var t = $(this).siblings(".input_val");
+		    var that = $(this);
+		    if(t.val()<=1){
+		      return false;
+		    }
+		    t.val(parseInt(t.val())-1);
+		    setTotal();
+		    getCount();
+		   
+		    	 //ajax更新数据库数据
+			  	 $.post(
+			  		'{:U("delNum")}',
+			  		{id: t.attr('gid'), nums: t.attr("value"), color: t.attr('color'), size: t.attr('size')},
+			  		function (data) {
+			  			if (data ==1 ) {
+			  				t.attr('orinums', t.val());
+							that.siblings('.jixian').hide();
+							t.attr('store', parseInt(t.attr('store'))+1); 
+			  			}
+						
+			  		},
+			  		'json'
+			  	);
+			  	
+		   
+		  });
+		  $(".add").click(function(){
+		    var t = $(this).siblings(".input_val");
+		    t.val(parseInt(t.val())+1);
+		    var that = $(this);
+		    // setTotal();
+		    // getCount();
+		    //ajax更新数据库数据
+		    $.post(
+		  		'{:U("addNum")}',
+		  		{id: t.attr('gid'), nums: t.attr("value"), color: t.attr('color'), size: t.attr('size')},
+		  		function (data) {
+		  			if (data == 1) {
+		  				// t.val(parseInt(t.val())+1);
+		  				t.attr('orinums', t.val());
+						t.attr('store', parseInt(t.attr('store'))-1); 
+
+		  				setTotal();
+		    			getCount();
+						that.siblings('.jixian').hide();
+						
+		  			} else {
+						that.siblings('.jixian').show();	
+		  				t.val(parseInt(t.val())-1);
+						setTotal();
+		    			getCount();
+		  			}
+
+		  		},
+		  		'json'
+		  		);
+		  	});
+		  })
+		  //选中单个checkbox
+		  $("table tbody input[name='checkbox']").click(function(){
+		    setTotal();
+		    getCount();
+		  });
+		  
+		  //checkbox 全选反选
+		  $("#allselect").click(function(){
+		    var t = $("input[name='checkbox']");
+		    if($(this).is(":checked")){
+		      t.prop("checked",true);
+		      setTotal();
+		      getCount();
+		    }else{
+		      t.prop("checked",false);
+		      setTotal();
+		      getCount();
+		    }
+
+		  });
+		  
+		  //删除商品
+		  var clickone = true;
+		  $(".delete").click(function(){
+		    if(clickone){
+		      var _this = $(this).parents("tr"), 
+		        s = _this.find(".subPrice").text();
+		      if(!_this.find(":checkbox").is(":checked")){
+		        alert("请选择一个要删除的商品");return false;
+		      }
+		      $("#total").text((parseInt($("#total").text()) - parseInt(s)).toFixed(2));
+		      clickone = false;
+		      _this.fadeOut(500,function(){
+		        _this.remove();
+		        clickone = true;
+		      });
+		      //ajax删除
+		      $.post(
+		  		'{:U("delGoods")}',
+		  		{id: _this.attr('gid'), nums: _this.find('input[type="text"]').attr('value'), color: _this.attr('color'), size: _this.attr('size')},
+		  		function (data) {
+		  			
+		  		},
+		  		'json'
+		  		);
+		      	if ($('.delete').size() == 1) {
+						$('tbody').html('<tr><td colspan="5">哎呀，您的购物车中还没有商品呢～<a href="list.php">快去购物吧！</a></td></tr>');
+				}
+		    }
+		  });
+		  
+
+		$(".input_val").change(function() {
+			 var this_val = $(this).val();
+			 var that = $(this);
+			 // setTotal();
+		  //    getCount();
+		  		if ((that.attr('store')-this_val) >= 0) {
+		  			//ajax修改数量
+					  $.post(
+					  		'{:U("changeNum")}',
+					  		{id: $(this).attr('gid'), nums: $(this).attr("value"), orinums:$(this).attr('orinums'), color: $(this).attr('color'), size: $(this).attr('size') },
+					  		function (data) {
+					  			if (data == 1) {
+				  					setTotal();
+				    				getCount();
+									that.siblings('.jixian').hide();
+									that.attr('store', parseInt(that.attr('store'))-parseInt(that.val())); 
+									
+					  			} else {
+									that.siblings('.jixian').show();
+									
+					  			}
+					  		},
+					  		'json'
+					  	);
+					  //让原来的值等于现在的值
+					  $(this).attr('orinums', $(this).attr("value"));
+		  		} else {
+		  			alert('该商品库存小于当前修改数量');
+		  			$(this).val($(this).attr('orinums'));
+		  		}
+		      
+			  
+		});
+
+		//单个商品总价
+		function setTotal(){
+		  var s = 0, tr = $("tr");
+		  tr.each(function(index, element) { 
+		    s = parseInt($(this).find("input[type='text']").val())*parseInt($(this).find(".price").text());
+		    $(this).find(".subPrice").text(s.toFixed(2));
+		    });
+		}
+
+		//总价
+		function getCount(){
+		  var count = 0;
+		  $("input[name='checkbox']").each(function(){
+		    if($(this).is(":checked")){
+		      count+=parseInt($(this).parents("tr").find(".subPrice").text());
+		    }
+		    });
+		  $("#total").text(count.toFixed(2));
+		}
+		setTotal();
+
+		//清空多条购物车商品
+		$('#deleteAll').click(function () { 
+			var gid = '';
+			var delgid = '';
+			var nums = '';
+			var color = '';
+			var size = '';
+			var select;
+			$("input[name='checkbox']").each(function(){
+				if($(this).is(":checked")){
+					gid = $(this).parents("tr").attr('gid')+','+gid;
+					nums = $(this).parent().siblings('.data').children('input[type="text"]').attr('value')+','+nums;
+					color = $(this).parents("tr").attr('color')+','+color;
+					size = $(this).parents("tr").attr('size')+','+size;
+					select = 1;
+				}
+			});
+			if (select == undefined) {
+				alert('请选择需要删除的商品');
+				return false;
+			}    	
+			console.log(color);
+			var bool = confirm('确认删除选中的所有商品?');
+			
+			if (bool) {
+				$.post(
+					'{:U("delAllGoods")}',
+					{id: gid, nums: nums, color:color, size:size},
+					function (data) {	
+						delgid = gid.split(',');
+						for(var i=0;i<delgid.length-1; i++) {
+							$('.goods_id').each(function () {
+								if ($(this).html() == delgid[i]) {
+									$(this).parents('tr').remove();
+								}
+							});
+						}
+
+							//清空后显示没有商品
+							if ($('.cartr').size() < 1) {
+							$('tbody').html('<tr><td colspan="5">哎呀，您的购物车中还没有商品呢～<a href="list.php">快去购物吧！</a></td></tr>');
+							}
+						
+					},
+					'json'
+				);
+				
+			}
+					
+		});
+
+		//结算按钮，判断是否登录，没登录跳到登录页面
+			$('#pay').click(function () {
+				if ($('.cartr').size() < 1) {
+					if (confirm('您的购物车中还没有商品呢，点击确定去选购商品')) {
+						location.href = "{:U('Home/index')}";
+					}
+				} else {
+						$.post(
+							'{:U("isLogin")}',
+							{},
+							function (data) {
+								if (data == 1) {
+									var gid = '';
+									var color = '';
+									var size = '';
+									var bool;
+									$("input[name='checkbox']").each(function(){
+		    							if($(this).is(":checked")){
+		    								bool = 1;
+		    								gid = $(this).parents().siblings('.data').children("input[type='text']").attr('gid')+','+gid;
+		    								color = $(this).parents("tr").attr('color')+','+color;
+											size = $(this).parents("tr").attr('size')+','+size;
+		    								location.href="__APP__/Home/Pay/payCarInfo/gid/"+gid+"/color/"+color+"/size/"+size+"."+"{$Think.config.URL_HTML_SUFFIX}";
+		    								
+		    							} 
+		    						});
+									if (bool == undefined) {
+										alert('请选择需要结算的商品');
+									}    					
+								} 
+
+							},
+							'json'
+						);
+
+				}	
+			});
+
+			//结算框里的取消按钮
+			$('#cancel').click(function(){
+				location.href = "{:U('Shopcar/showcar')}";
+			});
+
+			//退出登录
+			$('#loginout').click(function () {
+				$.post(
+					'{:U("Login/loginOut")}',
+					{},
+					function (data) {
+						if (data==1) {
+
+						}
+					},
+					'json'
+					);
+			});
+		</script>
+</block>

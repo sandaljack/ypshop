@@ -1,0 +1,143 @@
+<extend name="Index:base" />
+
+<block name="title"><title>商品库存管理</title></block>
+
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">商品管理</a></li>
+                <li><a href="#">商品信息</a></li>
+                <li class="am-active">库存信息</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span>库存信息
+                    </div>
+                    <div class="am-u-sm-9 am-u-sm-push-8">
+                        <a href="__APP__/Admin/Goodstore/addStore/id/{$gid}"><button class="am-btn am-btn-primary tpl-btn-bg-color-success ">插入库存
+                        </button></a>
+                        <a href="__APP__/Admin/Showgoods/showgood"><button class="am-btn am-btn-primary tpl-btn-bg-color-success ">返回
+                        </button></a>
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right"></div>
+                        </div>
+                    </div>
+                </div>
+            <div class="tpl-block">
+                    
+                    <div id="goodsDiv" class="am-g">
+                        <div id="myDiv" class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr class="am-text-center">
+                                            <th class="am-text-center">ID</th>
+                                            <th class="table-title am-text-center">商品名字</th>
+                                            <th class="table-type am-text-center">尺码</th>
+                                            <th class="table-author am-text-center">颜色</th>
+                                            <th class="table-author am-text-center">库存</th>
+                                            <th class="table-date am-text-center">价格</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="mytbody">                                    
+                                        <foreach name="storeData" item="v">
+                                            <tr class="am-text-center">
+                                                <td class="table-id">{$v.id}</td>
+                                                <td class="am-hide-sm-only">{$goodName['goods_name']}</td>
+                                                <td class="am-hide-sm-only">{$v.size}</td>
+                                                <td class="am-hide-sm-only">{$v.color}</td>
+                                                <td class="am-hide-sm-only">{$v.store}</td>
+                                                <td class="am-hide-sm-only">￥{$v.price}</td>
+                                                <td>
+                                                    <div class="am-btn-toolbar">
+                                                        <div class="am-btn-group am-btn-group-xs">
+                                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><a href="__APP__/Admin/Goodstore/changeStore/id/{$v.id}/goodid/{$v.goods_id}">修改</a></button>
+                                                            <button num="{$v.id}" mes="{$v.goods_id}" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only myDelete"><a href="javascript:;">删除</a></button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </foreach>
+                                        <tr>
+                                            <td class="am-text-center" colspan="7">
+                                                <if condition="$storeData eq null">
+                                                    <div>未有相关数据</div>
+                                                </if> 
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </form>
+                                <div class="am-cf">
+                                    <div class="col-xs-12 col-md-12 col-lg-12 b-page"> {$btn}</div>
+                                </div>
+                            <hr>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="javascript"> 
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+        //通过ajax删除商品信息
+        $('.myDelete').on('click', function ()
+        {
+            var that = $(this);
+                            
+            msg = '你确定要删除这条库存信息么';
+            
+            //点击删除按钮时，弹出一个是否确定删除的弹窗
+            if (confirm(msg) == true) {
+
+                var storeid = $(this).attr('num');
+
+            
+
+                $.post(
+
+                    '__APP__/Admin/Goodstore/deleteStore',
+
+                    {id: storeid},
+
+                    function (data) {
+
+                        if (data == 1) {
+
+                            alert('删除成功');
+
+                            that.parent().parent().parent().parent().remove();
+                            
+
+                        } else {
+
+                            alert('删除失败');
+                        }
+                    },
+
+                    'json'
+                );
+            }    
+        });
+
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+
+    </script>  
+</block>
+
+
+

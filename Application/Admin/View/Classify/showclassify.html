@@ -1,0 +1,183 @@
+<extend name="Index:base" />
+
+<block name="title"><title>分类管理</title></block>
+
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">分类管理</a></li>
+                <li class="am-active">分类列表</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 分类列表
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-block">
+                    <div class="am-u-sm-10 am-u-sm-offset-1">
+                        <div class="tpl-form-body tpl-form-line">
+                            <span>一级分类</span>
+                            <section data-am-widget="accordion" class="am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+                                <foreach name="firstsortData" key="key" item="value">
+                                    <dl class="am-accordion-item am-active" firstsortId="{$value.id}">
+                                        <dt class="am-accordion-title" >
+                                            {$value.name}
+                                        </dt>
+                                        <dd class="am-accordion-bd am-collapse">
+                                          <!-- 规避 Collapase 处理有 padding 的折叠内容计算计算有误问题， 加一个容器 -->
+                                            <div class="am-accordion-content am-u-sm-12">
+                                               
+                                            </div>
+                                            <div class="am-btn-group">
+                                              <a href="__APP__/Admin/Classify/changeClassify/id/{$value.id}"><button type="button" class="am-btn am-btn-default">编辑</button></a>
+                                              <a style="margin-left:-5px" href="javascript:"><button type="button" firstsortId="{$value.id}" class="am-btn am-btn-default myDelete">删除</button></a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </foreach>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+
+    $('.am-accordion').on('click', 'dl', function () {
+
+        var firstsortId = $(this).attr('firstsortId');
+
+        that = $(this);
+
+        if (!that.data('mark') == '1') {
+
+        $.post(
+
+            '__APP__/Admin/Classify/ajaxshowClassify',
+
+            {fid: firstsortId},
+
+            function (data) {
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var string = '<div class="am-u-sm-6 am-u-end"  style="margin-bottom:10px"><span style="margin-right:10px">二级标签</span><div class="am-btn-group am-btn-group-xs"><button type="button" class="am-btn am-btn-secondary am-radius" disabled="disabled">'+data[i].name+'</button><button type="button" class="am-btn am-btn-secondary am-radius"><a href="__APP__/Admin/Classify/changesecondClassify/id/'+data[i].id+'">编辑</a></button><button type="button" secondsortId="'+data[i].id+'" class="am-btn am-btn-secondary am-radius myDelete2">删除</button></div></div>';
+
+                    that.find('.am-accordion-content').append(string);
+                }
+
+                that.data('mark','1');
+                                                        
+            },
+
+            'json'
+        );
+    }
+    });
+
+
+
+    //通过ajax删除分类信息
+        $('.myDelete').on('click', function ()
+        {
+            var that = $(this);
+
+            var fid = that.attr('firstsortId');
+
+            msg = '你确定要删除这条分类信息么';
+            
+            //点击删除按钮时，弹出一个是否确定删除的弹窗
+            if (confirm(msg) == true) {
+
+                var fid = that.attr('firstsortId');
+
+                $.post(
+
+                    '__APP__/Admin/Classify/deleteClassify',
+
+                    {id: fid},
+
+                    function (data) {
+
+                        if (data['code'] == '404') {
+
+                            alert(data['msg']);
+
+                        } else if (data['code'] == '403'){
+
+                            alert(data['msg']);
+                            
+                        } else {
+
+                            alert(data['msg']);
+
+                            that.parent().parent().parent().parent().remove();
+                        }
+                    },
+
+                    'json'
+                );
+            }    
+        });
+
+        $('.am-accordion').on('click','.myDelete2' ,function ()
+        {
+
+            var that = $(this);
+            
+            var fid = that.attr('firstsortId');
+
+            msg = '你确定要删除这条分类信息么';
+            
+            //点击删除按钮时，弹出一个是否确定删除的弹窗
+            if (confirm(msg) == true) {
+
+                var sid = that.attr('secondsortId');
+
+                $.post(
+
+                    '__APP__/Admin/Classify/deletesecondClassify',
+
+                    {id: sid},
+
+                    function (data) {
+
+                        if (data['code'] == '404') {
+
+                            alert(data['msg']);
+
+                        } else if (data['code'] == '403'){
+
+                            alert(data['msg']);
+                            
+                        } else {
+
+                            alert(data['msg']);
+
+                            that.parent().parent().remove();
+                        }
+                    },
+
+                    'json'
+                );
+            }    
+        });
+  
+    </script>
+</block>

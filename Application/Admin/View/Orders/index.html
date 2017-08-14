@@ -1,0 +1,210 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>订单管理</title></block>
+<!-- 内容模块 -->
+<block name="main">
+    <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">订单管理</a></li>
+                <li class="am-active">订单列表</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 订单列表
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                 </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-5">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a href="__APP__/Admin/Orders/index"><button type="button" class="am-btn am-btn-default am-btn-success am-btn-xs"><span class="am-icon-plus"></span>清空搜索条件</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="get" action="{:U('Orders/index')}">
+                            <div class="am-u-sm-12 am-u-md-2">
+                                <span style="margin-left:70px">状态：</span>
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-2">
+                                <div id="firstsort" class="am-form-group">
+                                    <select  name="status" style="margin-left:-30px">
+                                        <option value="" selected>--请选择--</option>
+                                        <option <?=@$_GET['status']==1?'selected':''?> value="1">待付款</option>
+                                        <option <?=@$_GET['status']==2?'selected':''?> value="2">待发货</option>
+                                        <option <?=@$_GET['status']==3?'selected':''?> value="3">待收货</option>
+                                        <option <?=@$_GET['status']==4?'selected':''?> <?=@$_GET['status']==6?'selected':''?> value="4">交易成功</option>
+                                        <option <?=@$_GET['status']==5?'selected':''?> value="5">取消交易</option>
+                                    </select>
+                                </div> 
+                            </div>
+                           
+                            <div class="am-u-sm-12 am-u-md-3">
+                                <div class="am-input-group am-input-group-sm">
+                                    <input type="text" name="orders_num" placeholder="请输入要搜索的订单号" class="am-form-field">
+                                    <span class="am-input-group-btn">
+                                        <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search"></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-name">订单编号</th>
+
+                                            <th class="table-type">下单时间</th>
+                                            <th>金额</th>
+
+                                            <th class="table-author am-hide-sm-only">订单状态</th>
+                                            <th class="table-date am-hide-sm-only">订单详情</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <foreach name="list" item="v">
+                                        <tr>
+                                            <td class="rid">{$v.id}</td>
+                                            <td>{$v.orders_num}</td>
+                                            <td>
+                                                {$v.addtime}
+                                            </td>
+                                            <td>{$v.total}</td>
+                                            <if condition="$v['status'] eq 1 ">
+                                                <td class="am-hide-sm-only status">待付款</td>
+                                            </if>
+                                            <if condition="$v['status'] eq 2 ">
+                                                <td class="am-hide-sm-only status">已付款</td>
+                                            </if>
+                                            <if condition="$v['status'] eq 3 ">
+                                                <td class="am-hide-sm-only status">已发货</td>
+                                            </if>
+                                            <if condition="$v['status'] eq 4 ">
+                                                <td class="am-hide-sm-only status">交易完成</td>
+                                            </if>
+                                            <if condition="$v['status'] eq 6 ">
+                                                <td class="am-hide-sm-only status">交易完成</td>
+                                            </if>
+                                            <if condition="$v['status'] eq 5 ">
+                                                <td class="am-hide-sm-only status">取消交易</td>
+                                            </if>
+                                            
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary edituser" oid="{$v.orders_num}"><span class="am-icon-pencil-square-o" ></span> 订单详情</button>
+                                                       <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only delorders" oid="{$v.orders_num}"><span class="am-icon-trash-o"></span> 删除</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                    <if condition="$v['status'] eq 2 ">
+                                                        <button  class="am-btn am-btn-default am-btn-xs am-text-warning editgroup sendgoods" oid="{$v.orders_num}"><span class="am-icon-pencil-square-o" ></span>发货</button>
+                                                    </if>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                                {$page}
+                                <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+    </div>
+</block>
+<!-- javascript模块 -->
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+
+        //点击编辑
+        $('.edituser').each(function() {
+            $(this).click(function () {
+                var id = $(this).attr('oid');
+                location.href = '__APP__/Admin/Orders/ordersDetail/oid/'+id;
+            });
+        });
+
+        //点击删除
+        $('.delorders').each(function() {
+            var that = $(this);
+            $(this).click(function () {
+                var id = $(this).attr('oid');
+                $.post(
+                    '{:U("delOrders")}',
+                    {id:id},
+                    function (data) {
+                        if (data == 1) {
+                            that.parent().parent().parent().parent().remove();
+                        } 
+                    },
+                    'json'
+                );
+            });
+
+        });
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+
+        //付款点击发货
+        $('.sendgoods').each(function() {
+            $(this).click(function() {
+                var that = $(this);
+                var oid = $(this).attr('oid');
+
+                $.post(
+                    '{:U("Orders/sendGoods")}',
+                    {id:oid},
+                    function (data) {
+                        alert('发货成功');
+                        that.parents('tr').find('.status').html('已发货');
+                        that.remove();
+                    },
+                    'json'
+                    );
+
+            });
+        });
+      
+    </script>
+</block> 
+
+    
+
+
+
+
+
+        
+
+
+    
+    

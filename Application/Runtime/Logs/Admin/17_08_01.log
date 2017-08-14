@@ -1,0 +1,805 @@
+[ 2017-08-01T00:02:18+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Comment/index.html
+ERR: syntax error, unexpected '=>' (T_DOUBLE_ARROW), expecting ',' or ')'
+
+[ 2017-08-01T00:19:54+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000650s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001147s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0004s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 5  [ RunTime:0.0001s ]
+
+[ 2017-08-01T00:22:29+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000626s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001052s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0009s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 4  [ RunTime:0.0003s ]
+
+[ 2017-08-01T00:22:31+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000581s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000960s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0014s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 5  [ RunTime:0.0004s ]
+
+[ 2017-08-01T00:24:25+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000535s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000991s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0008s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 5  [ RunTime:0.0003s ]
+
+[ 2017-08-01T00:28:54+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000573s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000987s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0009s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 5  [ RunTime:0.0004s ]
+
+[ 2017-08-01T03:44:26+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000859s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0008s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='0' WHERE `id` = 11 [ RunTime:0.0589s ]
+
+[ 2017-08-01T03:44:28+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000657s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001191s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 11 [ RunTime:0.0416s ]
+
+[ 2017-08-01T03:44:31+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000547s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000905s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0010s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 12 [ RunTime:0.0634s ]
+
+[ 2017-08-01T03:44:33+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000490s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000892s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0008s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 14 [ RunTime:0.0977s ]
+
+[ 2017-08-01T03:44:38+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000472s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000795s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0007s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 17 [ RunTime:0.0876s ]
+
+[ 2017-08-01T03:44:40+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000269s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000574s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 18 [ RunTime:0.0339s ]
+
+[ 2017-08-01T03:44:41+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000550s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000910s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0011s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 19 [ RunTime:0.0566s ]
+
+[ 2017-08-01T03:44:42+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000533s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000967s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0010s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 20 [ RunTime:0.0354s ]
+
+[ 2017-08-01T03:44:46+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000786s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0007s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 21 [ RunTime:0.0435s ]
+
+[ 2017-08-01T03:44:49+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000602s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000994s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 22 [ RunTime:0.0541s ]
+
+[ 2017-08-01T03:44:50+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000312s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000549s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 23 [ RunTime:0.0452s ]
+
+[ 2017-08-01T03:44:52+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000362s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000624s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 24 [ RunTime:0.0255s ]
+
+[ 2017-08-01T03:44:54+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000535s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000969s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 25 [ RunTime:0.0546s ]
+
+[ 2017-08-01T03:45:00+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000590s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000999s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0103s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 26 [ RunTime:0.0333s ]
+
+[ 2017-08-01T03:45:01+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000421s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000687s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 27 [ RunTime:0.0633s ]
+
+[ 2017-08-01T03:45:03+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000550s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 28 [ RunTime:0.0375s ]
+
+[ 2017-08-01T03:45:04+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000556s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001085s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 29 [ RunTime:0.0457s ]
+
+[ 2017-08-01T03:45:07+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000717s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001135s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 30 [ RunTime:0.0832s ]
+
+[ 2017-08-01T03:45:14+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000343s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000650s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 31 [ RunTime:0.0557s ]
+
+[ 2017-08-01T03:45:15+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000995s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 32 [ RunTime:0.0605s ]
+
+[ 2017-08-01T03:45:21+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000562s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001048s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0029s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 33 [ RunTime:0.1231s ]
+
+[ 2017-08-01T03:45:23+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000999s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0010s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 34 [ RunTime:0.0355s ]
+
+[ 2017-08-01T03:45:24+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000527s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000932s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0011s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 35 [ RunTime:0.0673s ]
+
+[ 2017-08-01T03:45:40+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000379s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000676s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 40 [ RunTime:0.0340s ]
+
+[ 2017-08-01T03:45:44+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000439s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0007s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 41 [ RunTime:0.0880s ]
+
+[ 2017-08-01T03:45:45+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000421s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 42 [ RunTime:0.0539s ]
+
+[ 2017-08-01T03:45:47+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000336s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000613s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0007s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 43 [ RunTime:0.0388s ]
+
+[ 2017-08-01T03:45:48+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000645s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001114s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 44 [ RunTime:0.0282s ]
+
+[ 2017-08-01T03:45:59+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000456s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000866s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 46 [ RunTime:0.0304s ]
+
+[ 2017-08-01T03:46:01+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000476s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000788s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0012s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 47 [ RunTime:0.0687s ]
+
+[ 2017-08-01T03:46:02+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000509s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000930s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 48 [ RunTime:0.0621s ]
+
+[ 2017-08-01T03:46:04+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000269s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000430s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0004s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 49 [ RunTime:0.0333s ]
+
+[ 2017-08-01T03:46:05+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000371s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000585s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 50 [ RunTime:0.0647s ]
+
+[ 2017-08-01T03:46:10+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000276s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000520s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 51 [ RunTime:0.1194s ]
+
+[ 2017-08-01T03:46:12+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000427s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000737s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0008s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 52 [ RunTime:0.0291s ]
+
+[ 2017-08-01T03:46:13+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000462s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000801s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 53 [ RunTime:0.1700s ]
+
+[ 2017-08-01T03:46:14+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000364s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000610s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 54 [ RunTime:0.0520s ]
+
+[ 2017-08-01T03:46:16+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000351s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000615s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 55 [ RunTime:0.0214s ]
+
+[ 2017-08-01T03:46:20+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000567s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000950s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 56 [ RunTime:0.0369s ]
+
+[ 2017-08-01T03:46:21+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000225s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000385s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 57 [ RunTime:0.0270s ]
+
+[ 2017-08-01T03:46:23+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000712s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001105s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0004s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 58 [ RunTime:0.0774s ]
+
+[ 2017-08-01T03:46:26+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000242s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000423s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 59 [ RunTime:0.0385s ]
+
+[ 2017-08-01T03:46:28+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/changeStatus
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000272s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000439s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_goods` SET `goods_status`='2' WHERE `id` = 60 [ RunTime:0.2830s ]
+
+[ 2017-08-01T03:46:33+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000667s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001103s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0201s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 1  [ RunTime:0.0002s ]
+
+[ 2017-08-01T03:46:35+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001024s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0008s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 6  [ RunTime:0.0003s ]
+
+[ 2017-08-01T03:47:20+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Goodstore/deleteStore
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000550s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001046s ]
+SQL: SHOW COLUMNS FROM `yp_goods_price` [ RunTime:0.0145s ]
+SQL: DELETE FROM `yp_goods_price` WHERE `id` = 69 [ RunTime:0.0053s ]
+
+[ 2017-08-01T03:48:45+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/goodsDelete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000659s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001097s ]
+SQL: SHOW COLUMNS FROM `yp_goods_pictures` [ RunTime:0.0005s ]
+SQL: SELECT `pic_path1`,`pic_path2`,`pic_path3`,`pic_path4`,`pic_path5` FROM `yp_goods_pictures` WHERE `goods_id` = 61 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `yp_goods_detail_pictures` [ RunTime:0.0004s ]
+SQL: SELECT `pic_path1`,`pic_path2`,`pic_path3`,`pic_path4`,`pic_path5` FROM `yp_goods_detail_pictures` WHERE `goods_id` = 61 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0255s ]
+SQL: DELETE FROM `yp_goods` WHERE `id` = 61 [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `yp_goods_detail` [ RunTime:0.0083s ]
+SQL: DELETE FROM `yp_goods_detail` WHERE `goods_id` = 61 [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_goods_pictures` WHERE `goods_id` = 61 [ RunTime:0.0001s ]
+SQL: DELETE FROM `yp_goods_detail_pictures` WHERE `goods_id` = 61 [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `yp_goods_price` [ RunTime:0.0005s ]
+SQL: DELETE FROM `yp_goods_price` WHERE `goods_id` = 61 [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `yp_goods_size` [ RunTime:0.0004s ]
+SQL: DELETE FROM `yp_goods_size` WHERE `goods_id` = 61 [ RunTime:0.0080s ]
+NOTIC: [2] unlink(./Public/./uploads/common.jpg): No such file or directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/./uploads/common.jpg): No such file or directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+
+[ 2017-08-01T04:04:18+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Friendlink/delFriendlink.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000667s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001284s ]
+SQL: SHOW COLUMNS FROM `yp_friendlink` [ RunTime:0.0214s ]
+SQL: DELETE FROM `yp_friendlink` WHERE `id` = 1 [ RunTime:0.0325s ]
+
+[ 2017-08-01T08:39:10+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Orders/sendGoods.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000460s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000857s ]
+SQL: SHOW COLUMNS FROM `yp_orders` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_orders` SET `status`='3' WHERE `orders_num` = 'yp1_1501547554' [ RunTime:0.0563s ]
+
+[ 2017-08-01T08:44:23+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Orders/sendGoods.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000574s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001068s ]
+SQL: SHOW COLUMNS FROM `yp_orders` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_orders` SET `status`='3' WHERE `orders_num` = 'yp1_1501489136' [ RunTime:0.0432s ]
+
+[ 2017-08-01T09:16:49+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authrule/delrule.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000231s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000416s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_rule` WHERE `id` = 6 [ RunTime:0.0579s ]
+
+[ 2017-08-01T10:13:10+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Friendlink/form-amazeui.html
+ERR: 非法操作:form-amazeui
+
+[ 2017-08-01T10:13:35+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Friendlink/form-amazeui.html
+ERR: 非法操作:form-amazeui
+
+[ 2017-08-01T10:57:33+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/form-amazeui.html
+ERR: 非法操作:form-amazeui
+
+[ 2017-08-01T11:08:22+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Login/Admin/Index/index
+ERR: 非法操作:Admin
+
+[ 2017-08-01T11:09:54+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Index/form-amazeui.html
+ERR: 非法操作:form-amazeui
+
+[ 2017-08-01T11:11:10+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Index/form-amazeui.html
+ERR: 非法操作:form-amazeui
+
+[ 2017-08-01T11:48:27+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000365s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000606s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 3 [ RunTime:0.0519s ]
+
+[ 2017-08-01T11:51:14+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000268s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000443s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 4 [ RunTime:0.0224s ]
+
+[ 2017-08-01T11:52:08+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000271s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000520s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 5 [ RunTime:0.0611s ]
+
+[ 2017-08-01T11:52:27+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000312s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000663s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 6 [ RunTime:0.0573s ]
+
+[ 2017-08-01T11:53:01+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000257s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000510s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 7 [ RunTime:0.0027s ]
+
+[ 2017-08-01T11:56:49+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000247s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000432s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 9 [ RunTime:0.0176s ]
+
+[ 2017-08-01T11:56:49+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000243s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000422s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 8 [ RunTime:0.0367s ]
+
+[ 2017-08-01T12:00:27+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authrule/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000324s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000523s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0003s ]
+SQL: UPDATE `yp_auth_rule` SET `status`='0' WHERE `id` = 1 [ RunTime:0.0373s ]
+
+[ 2017-08-01T12:00:31+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authrule/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000581s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001059s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `yp_auth_rule` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_auth_rule` SET `status`='1' WHERE `id` = 1 [ RunTime:0.0710s ]
+
+[ 2017-08-01T12:01:28+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000255s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000436s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 10 [ RunTime:0.0245s ]
+
+[ 2017-08-01T12:01:56+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000226s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000390s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 11 [ RunTime:0.0678s ]
+
+[ 2017-08-01T12:15:42+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000457s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 13 [ RunTime:0.0274s ]
+
+[ 2017-08-01T12:15:52+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000250s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000462s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 14 [ RunTime:0.0740s ]
+
+[ 2017-08-01T12:15:58+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000470s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000725s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 2 [ RunTime:0.0554s ]
+
+[ 2017-08-01T12:16:06+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/delgroup.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000248s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000429s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_auth_group` WHERE `id` = 12 [ RunTime:0.0253s ]
+
+[ 2017-08-01T12:28:47+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000270s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000503s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0004s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 9  [ RunTime:0.0002s ]
+
+[ 2017-08-01T12:28:49+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/deletesecondClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000662s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0007s ]
+SQL: SELECT `id` FROM `yp_goods` WHERE `second_sort_id` = 22 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: DELETE FROM `yp_second_sort` WHERE `id` = 22 [ RunTime:0.0636s ]
+
+[ 2017-08-01T12:28:55+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000363s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000597s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 9  [ RunTime:0.0003s ]
+
+[ 2017-08-01T12:29:18+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000440s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000755s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 9  [ RunTime:0.0002s ]
+
+[ 2017-08-01T12:29:20+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001157s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 10  [ RunTime:0.0002s ]
+
+[ 2017-08-01T12:29:21+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000615s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001012s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 8  [ RunTime:0.0001s ]
+
+[ 2017-08-01T12:31:54+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/ajaxshowClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000596s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001097s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 9  [ RunTime:0.0002s ]
+
+[ 2017-08-01T12:31:57+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Classify/deletesecondClassify
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000648s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001066s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0006s ]
+SQL: SELECT `id` FROM `yp_goods` WHERE `second_sort_id` = 23 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: DELETE FROM `yp_second_sort` WHERE `id` = 23 [ RunTime:0.0452s ]
+
+[ 2017-08-01T12:58:55+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000402s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000698s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0007s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 2  [ RunTime:0.0002s ]
+
+[ 2017-08-01T12:58:57+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Addgoods/ajaxData
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000666s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001234s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0011s ]
+SQL: SELECT `name`,`id` FROM `yp_second_sort` WHERE `first_sort_id` = 6  [ RunTime:0.0004s ]
+
+[ 2017-08-01T13:00:24+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Goodstore/deleteStore
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000404s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000678s ]
+SQL: SHOW COLUMNS FROM `yp_goods_price` [ RunTime:0.0006s ]
+SQL: DELETE FROM `yp_goods_price` WHERE `id` = 71 [ RunTime:0.0003s ]
+
+[ 2017-08-01T13:01:30+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/goodsDelete
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000342s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000570s ]
+SQL: SHOW COLUMNS FROM `yp_goods_pictures` [ RunTime:0.0005s ]
+SQL: SELECT `pic_path1`,`pic_path2`,`pic_path3`,`pic_path4`,`pic_path5` FROM `yp_goods_pictures` WHERE `goods_id` = 62 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `yp_goods_detail_pictures` [ RunTime:0.0004s ]
+SQL: SELECT `pic_path1`,`pic_path2`,`pic_path3`,`pic_path4`,`pic_path5` FROM `yp_goods_detail_pictures` WHERE `goods_id` = 62 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `yp_goods` [ RunTime:0.0008s ]
+SQL: DELETE FROM `yp_goods` WHERE `id` = 62 [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `yp_goods_detail` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_goods_detail` WHERE `goods_id` = 62 [ RunTime:0.0001s ]
+SQL: DELETE FROM `yp_goods_pictures` WHERE `goods_id` = 62 [ RunTime:0.0001s ]
+SQL: DELETE FROM `yp_goods_detail_pictures` WHERE `goods_id` = 62 [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `yp_goods_price` [ RunTime:0.0003s ]
+SQL: DELETE FROM `yp_goods_price` WHERE `goods_id` = 62 [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `yp_goods_size` [ RunTime:0.0002s ]
+SQL: DELETE FROM `yp_goods_size` WHERE `goods_id` = 62 [ RunTime:0.0676s ]
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 176 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+NOTIC: [2] unlink(./Public/): Is a directory /usr/local/apache2/htdocs/thinkphp_3.2.3_full/Application/Admin/Controller/ShowgoodsController.class.php 第 183 行.
+
+[ 2017-08-01T13:18:09+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/secondSort
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000484s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000820s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 1  [ RunTime:0.0002s ]
+
+[ 2017-08-01T13:32:26+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Orders/sendGoods.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000579s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001064s ]
+SQL: SHOW COLUMNS FROM `yp_orders` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_orders` SET `status`='3' WHERE `orders_num` = 'yp1_1501490939' [ RunTime:0.0569s ]
+
+[ 2017-08-01T13:35:23+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000580s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001153s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_auth_group` SET `status`='0' WHERE `id` = 15 [ RunTime:0.0859s ]
+
+[ 2017-08-01T13:35:29+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000571s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001036s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_auth_group` SET `status`='1' WHERE `id` = 15 [ RunTime:0.0327s ]
+
+[ 2017-08-01T13:35:33+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Authgroup/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000656s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001044s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `yp_auth_group` [ RunTime:0.0003s ]
+SQL: UPDATE `yp_auth_group` SET `status`='0' WHERE `id` = 15 [ RunTime:0.0565s ]
+
+[ 2017-08-01T13:37:30+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000407s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 1 [ RunTime:0.0343s ]
+
+[ 2017-08-01T13:37:32+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000588s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000978s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 1 [ RunTime:0.0303s ]
+
+[ 2017-08-01T13:37:32+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000540s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000981s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0009s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 2 [ RunTime:0.0117s ]
+
+[ 2017-08-01T13:37:59+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001176s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 2 [ RunTime:0.0641s ]
+
+[ 2017-08-01T13:39:20+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/delAdminuser.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000614s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001124s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0007s ]
+SQL: DELETE FROM `yp_adminuser` WHERE `id` = 4 [ RunTime:0.0258s ]
+
+[ 2017-08-01T13:40:03+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000317s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000524s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 3 [ RunTime:0.0777s ]
+
+[ 2017-08-01T13:40:03+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000695s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001146s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 2 [ RunTime:0.0526s ]
+
+[ 2017-08-01T13:40:04+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000640s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001056s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0010s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 1 [ RunTime:0.0494s ]
+
+[ 2017-08-01T13:40:05+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000643s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001060s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 2 [ RunTime:0.0122s ]
+
+[ 2017-08-01T13:40:05+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000977s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 3 [ RunTime:0.0115s ]
+
+[ 2017-08-01T13:40:06+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000604s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001105s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0005s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 1 [ RunTime:0.0129s ]
+
+[ 2017-08-01T14:46:11+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000296s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000487s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0004s ]
+SQL: UPDATE `yp_adminuser` SET `status`='0' WHERE `id` = 3 [ RunTime:0.0432s ]
+
+[ 2017-08-01T14:48:41+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/Adminuser/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000489s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000934s ]
+SQL: SHOW COLUMNS FROM `yp_adminuser` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_adminuser` SET `status`='1' WHERE `id` = 3 [ RunTime:0.0433s ]
+
+[ 2017-08-01T21:12:33+08:00 ] 192.168.37.166 /thinkphp_3.2.3_full/index.php/Admin/User/changestatus.html
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000459s ]
+SQL: SHOW COLUMNS FROM `yp_user` [ RunTime:0.0006s ]
+SQL: UPDATE `yp_user` SET `status`='2' WHERE `id` = 14 [ RunTime:0.0638s ]
+
+[ 2017-08-01T21:16:20+08:00 ] 192.168.37.178 /thinkphp_3.2.3_full/index.php/Admin/Showgoods/secondSort
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000259s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000468s ]
+SQL: SHOW COLUMNS FROM `yp_second_sort` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `yp_second_sort` WHERE `first_sort_id` = 3  [ RunTime:0.0002s ]
+

@@ -1,0 +1,694 @@
+<extend name="Index:base" />
+<block name="title"><title>结算页面</title></block>
+<block name="link">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/css/cartstyle.css" rel="stylesheet" type="text/css" />
+	<link href="__PUBLIC__/css/jsstyle.css" rel="stylesheet" type="text/css" />
+</block>
+<block name="script">
+	<script type="text/javascript" src="__PUBLIC__/js/address.js"></script>
+	<script src="__PUBLIC__/js/jquery-1.7.2.min.js"></script>
+</block>
+<block name="main">
+			<div class="concent">
+				<!--地址 -->
+				<div class="paycont">
+					<div class="address">
+						<h3>确认收货地址 </h3>
+						<if condition="$addcount lt 5
+						 ">
+						<div class="control">
+							<div class="tc-btn createAddr theme-login am-btn am-btn-danger">使用新地址</div>
+						</div>
+						<else />
+							<a href="{:U('Address/showAddress')}" target="_blank" class="am-btn am-btn-warning" style="margin-top:15px;margin-left:10px">管理收货地址</a>
+							<span style="position:relative;top:10px">每个用户收货地址最多为5个，点击管理收货地址进行管理</span>
+						</if>
+						
+						<div class="clear"></div>
+						<ul id="uladdress">
+							<foreach name="addinfo" item="v">
+							<div class="per-border"></div><if condition="$v.add_default eq 1 "><li class="user-addresslist defaultAddr"><else/><li class="user-addresslist"> </if>
+						
+								<div class="address-left" >
+									<div class="user DefaultAddr">
+										<span class="buy-address-detail">   
+                   						<span class="buy-user">{$v.add_name} </span>
+										<span class="buy-phone">{$v.add_phone}</span>
+										</span>
+									</div>
+									 <div class="default-address DefaultAddr">   
+									
+										<span class="buy-line-title buy-line-title-type">收货地址：</span>
+										<span class="buy--address-detail">
+								   		<span class="province">{$v.add_province}</span>
+										<span class="city">{$v.add_city}</span>
+										<span class="dist">{$v.add_area}</span>
+										<span class="town">{$v.add_town}</span>
+										<span class="street">{$v.add_detail}</span>
+										</span>
+
+										</span>
+									</div>
+									
+								</div>
+								<!-- <div class="address-right">
+									<a href="__PUBLIC__/person/address.html">
+										<span class="am-icon-angle-right am-icon-lg"></span></a>
+
+								</div>
+								<div class="clear"></div> -->
+
+								<div class="new-addr-btn" >
+									<if condition="$v.add_default eq 1 ">
+									<ins class="deftip" style="position:relative">默认地址</ins>
+									<else/>
+									<ins class="deftip hidden" style="position:relative">默认地址</ins>
+									</if>
+									<if condition="$v.add_default neq 1 ">
+									<a class="updefault" aid="{$v.id}" href="javascript:;">设为默认</a>
+									<span class="new-addr-bar">|</span>
+									<else/>
+									<a href="javascript:;" aid="{$v.id}" class="hidden updefault">设为默认</a>
+									<span class="new-addr-bar hidden">|</span>
+									</if>
+									<a class="" target="_blank" href="__APP__/Home/Address/editAddress/id/{$v.id}">修改</a>
+									<!-- <span class="new-addr-bar">|</span>
+									<a class="deladd" aid="{$v.id}" def="{$v.add_default}" href="javascript:void(0);" >删除</a> -->
+								</div>
+								
+							</li>
+							</foreach>
+							
+						</ul>
+
+						<div class="clear"></div>
+					</div>
+					<!--物流 -->
+					<div class="logistics">
+						<h3>选择物流方式</h3>
+						<ul class="op_express_delivery_hot">
+							<li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
+							<li data-value="shentong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -1008px"></i>申通<span></span></li>
+							<li data-value="yunda" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -576px"></i>韵达<span></span></li>
+							<li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last "><i class="c-gap-right" style="background-position:0px -324px"></i>中通<span></span></li>
+							<li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+
+					<!--支付方式-->
+					<div class="logistics">
+						<h3>选择支付方式</h3>
+						<ul class="pay-list">
+							<li class="pay card"><img src="__PUBLIC__/images/wangyin.jpg" />银联<span></span></li>
+							<li class="pay qq"><img src="__PUBLIC__/images/weizhifu.jpg" />微信<span></span></li>
+							<li class="pay taobao"><img src="__PUBLIC__/images/zhifubao.jpg" />支付宝<span></span></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+
+					<!--订单 -->
+					<div class="concent">
+						<div id="payTable">
+							<h3>确认订单信息</h3>
+							<div class="cart-table-th">
+								<div class="wp">
+
+									<div class="th th-item">
+										<div class="td-inner" style="margin-left:-380px">商品信息</div>
+									</div>
+									<div class="th th-price">
+										<div class="td-inner">单价</div>
+									</div>
+									<div class="th th-amount">
+										<div class="td-inner">数量</div>
+									</div>
+									<div class="th th-sum">
+										<div class="td-inner">金额</div>
+									</div>
+									<div class="th th-oplist">
+										<div class="td-inner">配送方式</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="clear"></div>
+							
+							<div  id="gid" gid="{$gid}" color="{$color}" size="{$size}" nums="{$nums}" style="display:none"></div>
+							<notempty name="listinfo">
+								<tr class="item-list">
+								<div class="bundle  bundle-last">
+									<div class="bundle-main">
+										<ul class="item-content clearfix" gid="{$listinfo.goods_id}" color="{$listinfo.color}" size="{$listinfo.size}" nums="{$listinfo.nums}" total="{$listinfo[nums] * $listinfo[price]}.00" name="info">
+											<div class="pay-phone">
+												<li class="td td-item">
+													<div class="item-pic">
+														<a href="#" class="J_MakePoint">
+															<img src="__PUBLIC__/{$listinfo.pic_path}" class="" style="width:80px;height=100px"></a>
+													</div>
+													<div class="item-info">
+														<div class="item-basic-info">
+															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">{$listinfo.goods_name}</a>
+														</div>
+													</div>
+												</li>
+												<li class="td td-info">
+													<div class="item-props">
+														<span class="sku-line">颜色：{$listinfo.color}</span>
+														<span class="sku-line">尺码：{$listinfo.size}</span>
+													</div>
+												</li>
+												<li class="td td-price">
+													<div class="item-price price-promo-promo">
+														<div class="price-content">
+															<em class="J_Price price-now">{$listinfo.price}</em>
+														</div>
+													</div>
+												</li>
+											</div>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">
+														<span class="phone-title">购买数量</span>
+														<div class="sl">
+															<span class="text_box" name="" type="text" value="{$v.nums}" style="width:30px;">{$listinfo.nums}</span>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<em tabindex="0" class="countprice" class="J_ItemSum number">{$listinfo['price'] * $listinfo['nums']}.00</em>
+												</div>
+											</li>
+												<li class="td td-oplist">
+												<div class="td-inner">
+													<span class="phone-title">配送方式</span>
+													<div class="pay-logis">
+														<!-- 快递<b class="sys_item_freprice">0</b>元 -->
+														包邮
+													</div>
+												</div>
+											</li>
+
+										</ul>
+										<div class="clear"></div>
+
+									</div>
+							</tr>
+							<else /> 
+							<foreach name="carinfo" item="v" key="k">
+							<foreach name="v" item="val" key="key">
+							<tr class="item-list">
+								<div class="bundle  bundle-last">
+									<div class="bundle-main">
+										<ul class="item-content clearfix" gid="{$val.goods_id}" color="{$val.color}" size="{$val.size}" nums="{$val.nums}" total="{$val[nums] * $val[price]}.00" name="info">
+											<div class="pay-phone">
+												<li class="td td-item">
+													<div class="item-pic">
+														<a href="#" class="J_MakePoint">
+															<img src="__PUBLIC__/{$val.pic_path}" class="" style="width:80px;height=100px"></a>
+													</div>
+													<div class="item-info">
+														<div class="item-basic-info">
+															<a href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">{$val.goods_name}</a>
+														</div>
+													</div>
+												</li>
+												<li class="td td-info">
+													<div class="item-props">
+														<span class="sku-line">颜色：{$val.color}</span>
+														<span class="sku-line">尺码：{$val.size}</span>
+													</div>
+												</li>
+												<li class="td td-price">
+													<div class="item-price price-promo-promo">
+														<div class="price-content">
+															<em class="J_Price price-now">{$val.price}</em>
+														</div>
+													</div>
+												</li>
+											</div>
+											<li class="td td-amount">
+												<div class="amount-wrapper ">
+													<div class="item-amount ">
+														<span class="phone-title">购买数量</span>
+														<div class="sl">
+															<span class="text_box" name="" type="text" value="{$v.nums}" style="width:30px;">{$val.nums}</span>
+														</div>
+													</div>
+												</div>
+											</li>
+											<li class="td td-sum">
+												<div class="td-inner">
+													<em tabindex="0" class="countprice" class="J_ItemSum number">{$val['price'] * $val['nums']}.00</em>
+												</div>
+											</li>
+											<li class="td td-oplist">
+												<div class="td-inner">
+													<span class="phone-title">配送方式</span>
+													<div class="pay-logis">
+														<!-- 快递<b class="sys_item_freprice">0</b>元 -->
+														包邮
+													</div>
+												</div>
+											</li>
+
+										</ul>
+										<div class="clear"></div>
+
+									</div>
+							</tr>
+							</foreach>
+							</foreach>
+							</notempty> 
+							
+							<div class="clear"></div>
+							</div>
+
+							
+							<div class="clear"></div>
+							<div class="pay-total">
+						<!--留言-->
+							<div class="order-extra">
+								<div class="order-user-info">
+									<div id="holyshit257" class="memo">
+										<label>买家留言：</label>
+										<input id="buymsg" type="text" title="选填,对本次交易的说明（建议填写已经和卖家达成一致的说明）" value="" placeholder="选填, 建议填写和卖家达成一致的说明" class="memo-input J_MakePoint c2c-text-default memo-close">
+										<div class="msg hidden J-msg">
+											<p class="error">最多输入500个字符</p>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!--优惠券 -->
+							<div class="buy-agio">
+								<li class="td td-coupon">
+
+									<span class="coupon-title">优惠券</span>
+									<select data-am-selected>
+										<option value="a">
+											<div class="c-price">
+												<strong>￥8</strong>
+											</div>
+											<div class="c-limit">
+												【消费满95元可用】
+											</div>
+										</option>
+										<option value="b" selected>
+											<div class="c-price">
+												<strong>￥3</strong>
+											</div>
+											<div class="c-limit">
+												【无使用门槛】
+											</div>
+										</option>
+									</select>
+								</li>
+
+								<li class="td td-bonus">
+
+									<span class="bonus-title">红包</span>
+									<select data-am-selected>
+										<option value="a">
+											<div class="item-info">
+												¥50.00<span>元</span>
+											</div>
+											<div class="item-remainderprice">
+												<span>还剩</span>10.40<span>元</span>
+											</div>
+										</option>
+										<option value="b" selected>
+											<div class="item-info">
+												¥50.00<span>元</span>
+											</div>
+											<div class="item-remainderprice">
+												<span>还剩</span>50.00<span>元</span>
+											</div>
+										</option>
+									</select>
+
+								</li>
+
+							</div>
+							<div class="clear"></div>
+							</div>
+							<!--含运费小计 -->
+							<div class="buy-point-discharge ">
+								<p class="price g_price ">
+									合计（含运费） <span>¥</span><em id="ordertotal" class="pay-sum alltotal">244.00</em>
+								</p>
+							</div>
+
+							<!--信息 -->
+							<div class="order-go clearfix">
+								<div class="pay-confirm clearfix">
+									<div class="box">
+										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
+											<span class="price g_price ">
+                                    <span>¥</span> <em class="alltotal" class="style-large-bold-red " id="J_ActualFee">244.00</em>
+											</span>
+										</div>
+										<foreach name="addinfo" item="v">
+										<if condition="$v.add_default eq 1">  
+										<div id="holyshit268" class="pay-address">
+											<p class="buy-footer-address">
+												<span class="buy-line-title buy-line-title-type">寄送至：</span>
+												<span class="buy--address-detail">
+								   				<span id="_province" class="province">{$v.add_province}</span>
+												<span id="_city" class="city">{$v.add_city}</span>
+												<if condition="$v.['add_area'] neq null">
+												<span id="_dist" class="dist">{$v.add_area}</span>
+												</if>
+												<if condition="$v.['add_town'] neq null">
+												<span id="_town" class="town">{$v.add_town}</span>
+												</if>
+												<span id="_street" class="street">{$v.add_detail}</span>
+
+												</span>
+												</span>
+											</p>
+											<p class="buy-footer-address">
+												<span class="buy-line-title">收货人：</span>
+												<span class="buy-address-detail">   
+                                         		<span id="_buy-user" class="buy-user">{$v.add_name}</span>
+												<span id="_buy-phone" class="buy-phone">{$v.add_phone}</span>
+												</span>
+											</p>
+										</div>
+										</if>
+										</foreach>
+									</div>
+
+									<div id="holyshit269" class="submitOrder">
+										<div class="go-btn-wrap">
+											<if condition="$addcount neq 0">
+											<a id="submitOrders" href="javascript:;" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											<else />
+											<a id="noaddress" href="javascript:;" class="btn-go" tabindex="0" title="点击此按钮，提交订单">提交订单</a>
+											</if>
+										</div>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="clear"></div>
+					</div>
+				</div>
+
+			<!-- 地址点击 -->
+			<div class="theme-popover-mask"></div>
+			<div class="theme-popover">
+				<!--标题 -->
+				<div class="am-cf am-padding">
+					<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">新增地址</strong> / <small>Add address</small></div>
+				</div>
+				<hr/>
+
+				<div class="am-u-md-12">
+					<form class="am-form am-form-horizontal">
+
+						<div class="am-form-group">
+							<label for="buyname" class="am-form-label">收货人</label>
+							<div class="am-form-content">
+								<input type="text" id="buyname" name="buyname"  placeholder="收货人">
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="buyphone" class="am-form-label">手机号码</label>
+							<div class="am-form-content">
+								<input id="buyphone" name="phone" placeholder="手机号必填" type="email" >
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="user-phone" class="am-form-label">所在地</label>
+							<div class="am-form-content address">
+								<div id="area">
+									<select name="province" id="province" data-am-selected>
+										<option value="-1">--请选择--</option>
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="am-form-group">
+							<label for="addDetail" class="am-form-label">详细地址</label>
+							<div class="am-form-content">
+								<textarea class="" rows="3" id="addDetail" placeholder="输入详细地址"></textarea>
+								<small>100字以内写出你的详细地址</small>
+							</div>
+						</div>
+
+						<div class="am-form-group theme-poptit">
+							<div class="am-u-sm-9 am-u-sm-push-3">
+								<div class="am-btn am-btn-danger" id="saveAdd">保存</div>
+								<div class="am-btn am-btn-danger close" id="close">返回</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="clear"></div>
+</block>
+<block name="javascript">
+			<script>
+
+				//计算总价
+				var alltotal = 0;
+				$('.countprice').each(function() {
+					alltotal += parseInt($(this).html());
+				});
+				$('.alltotal').each(function() {
+					$(this).html(alltotal+'.00');
+				});
+				
+				//点击提交菜单
+				$('#submitOrders').click(function() {
+					//获取提交数据
+					var gid = '';
+					var nums = '';
+					var color = '';
+					var size = '';
+					$('ul[name="info"]').each(function () {
+						gid = $(this).attr('gid')+','+gid;
+						nums = $(this).attr('nums')+','+nums;
+						color = $(this).attr('color')+','+color;
+						size = $(this).attr('size')+','+size; 
+						
+					});
+					
+					//订单总价
+					var total = $('#ordertotal').html();
+					//收货人
+					var buyuser = $('#_buy-user').html();
+					//收货人手机
+					var buyphone = $('#_buy-phone').html();
+					//省份
+					var province = $('#_province').html();
+					//城市
+					var city = $('#_city').html();
+					//区
+					var area = $('#_dist').html();
+					//城镇
+					var town = $('#_town').html();
+					//详情地址
+					var street = $('#_street').html();
+					//买家留言
+					var message = $('#buymsg').val();
+					location.href="__APP__/Home/Pay/submitOrders/gid/"+gid+"/nums/"+nums+"/color/"+color+"/size/"+size+"/total/"+total+"/buyuser/"+buyuser+"/buyphone/"+buyphone+"/province/"+province+"/city/"+city+"/area/"+area+"/town/"+town+"/street/"+street+"/message/"+message+"."+"{$Think.config.URL_HTML_SUFFIX}";
+				});
+
+				//地址三级联动
+				$.post(
+					'{:U("Pay/addressInfo")}',
+
+					{upid: 0},
+
+					function (data) {
+						var str = '';
+						for (var i = 0; i < data.length; i++) {
+							str += '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+						}
+						$('#province').append(str);
+					},
+					'json'
+					);
+				//获取地址数据
+				$('#area').on('change', 'select', function () {
+					if ($('#province').val() != '-1' ) {
+						var province = $('#province').children(':selected').html();
+					} else {
+							$('#city').val('-1');
+							$('#county').val('-1');
+					}
+					if ($('#city').val() != '-1' && $('#city').val() != undefined ) {
+						var city = $('#city').children(':selected').html();
+					} else {
+							$('#county').val('-1');
+					}
+					if ($('#county').val() != '-1' && $('#county').val() != undefined) {
+						var county = $('#county').children(':selected').html();
+					} else {
+							$('#town').val('-1');
+					}
+					if ($('#town').val() != '-1' && $('#county').val() != undefined) {
+						var town = $('#town').children(':selected').html();
+					}
+					//拿到当前省份的id
+					var id = $(this).val();
+					var that = $(this);
+					var nameVal = '';
+					switch ($(this).index()) {
+						case 0:
+							nameVal = 'city';
+							break;
+						case 1:
+							nameVal = 'county';
+							break;
+						case 2:
+							nameVal = 'town';
+							break;
+						case 3:
+							nameVal = 'road';
+							break;
+						default:
+							nameVal = 'other';
+							break;
+					}
+
+					$.post(
+						'{:U("Pay/addressInfo")}',
+
+						{upid: id},
+
+						function (data) {
+							if (data.length > 0) {
+								var str = '<select name="'+ nameVal +'" id="'+ nameVal +'">';
+								str += '<option value="-1">--请选择--</option>';
+								for (var i = 0; i < data.length; i++) {
+
+									str += '<option value="'+ data[i].id +'">'+data[i].name+'</option>';
+								}
+								str += '</select>';
+
+								//先删除#pro后面的所有select
+								that.nextAll('select').remove();
+								$('#area').append(str);
+								if ($('#province').val() == '') {
+									$('#province').next().remove();
+								}
+							}
+						},
+						'json'
+						);
+				});
+
+			//点击保存新加地址
+			$('#saveAdd').click(function() {
+				var province = $('#province').children(':selected').html();
+				var city = $('#city').children(':selected').html();
+				var county = $('#county').children(':selected').html();
+				var town = $('#town').children(':selected').html();
+				var buyname = $('#buyname').attr('value');
+				var buyphone = $('#buyphone').attr('value');
+				var detail = $('#addDetail').attr('value');
+
+					if (province == '--请选择--') {
+						alert('请选择省份');
+					} else if (city == '--请选择--') {
+						alert('请选择城市');
+					} else if (county == '--请选择--') {
+						alert('请选择地区');
+					} else if (town == '--请选择--') {
+						alert('请选择城镇');
+					} else if (!detail) {
+						alert('请填写详情地址');
+					} else if (!buyname) {
+						alert('请填写收货人');
+					} else if (!buyphone) {
+						alert('请填写收货人手机号码');
+					} else {
+						if (county == null) {
+							county = ' ';
+						}
+						if (town == null) {
+							town = ' ';
+						}
+						$.post(
+							'{:U("Pay/addAddress")}',
+							{buyname:buyname, buyphone:buyphone, province:province, city:city, county:county, town:town, detail:detail },
+							function (data) {
+								if (data == 1) {
+									// alert('添加地址成功');
+									var gid = $('#gid').attr('gid');
+									var color = $('#gid').attr('color');
+									var size = $('#gid').attr('size');
+									var nums = $('#gid').attr('nums');
+									if (nums == 'car') {
+										
+										location.href = "__APP__/Home/Pay/payCarInfo/gid/"+gid+"/color/"+color+"/size/"+size+"."+"{$Think.config.URL_HTML_SUFFIX}";
+									} else {
+										
+										location.href = "__APP__/Home/Pay/payCarInfo/lgid/"+gid+"/lnums/"+nums+"/lcolor/"+color+"/lsize/"+size+"."+"{$Think.config.URL_HTML_SUFFIX}";
+									} 
+										
+								} else {
+									alert('添加地址失败');
+								}
+							},
+							'json'
+
+						);
+
+					}
+			});
+
+			//设置默认地址
+			$('.updefault').each(function() {
+				var aid = $(this).attr('aid');
+				$(this).click(function() {
+					var that = $(this);
+					$.post(
+					'{:U("Pay/upDefaultAdd")}',
+					{id:aid},
+					function (data) {
+						if (data == 1) {
+							//将所有的改变
+							$('#uladdress').find('.updefault').removeClass('hidden').next().removeClass('hidden').parent().parent().find('.deftip').addClass('hidden');
+							//然后单独改变
+							that.addClass('hidden').next().addClass('hidden').parent().parent().find('.deftip').removeClass('hidden');
+						}
+					},
+					'json'
+					);
+				});
+			});
+
+			//点击选择收货地址
+			$('.user-addresslist').each(function() {
+				$(this).click(function() {
+					$('#_province').html($(this).find('.province').html());
+					$('#_city').html($(this).find('.city').html());
+					$('#_dist').html($(this).find('.dist').html());
+					$('#_town').html($(this).find('.town').html());
+					$('#_street').html($(this).find('.street').html());
+					$('#_buy-user').html($(this).find('.buy-user').html());
+					$('#_buy-phone').html($(this).find('.buy-phone').html());
+
+				});
+			});
+
+			//没有地址不能提交
+			$('#noaddress').click(function() {
+				alert('没有地址选择，请添加新地址！');
+			});
+		</script>
+</block>

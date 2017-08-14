@@ -1,0 +1,223 @@
+<!-- 继承base模板 -->
+<extend name="Index:base" />
+
+<!-- title模块 -->
+<block name="title"><title>收藏中心</title></block>
+
+<!-- link模块 -->
+<block name="link">
+		<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/css/personal.css" rel="stylesheet" type="text/css">
+		<link href="__PUBLIC__/css/colstyle.css" rel="stylesheet" type="text/css">
+
+		<style>
+			
+		 .mystylea:hover{
+		 	color:red;
+		 	background:#eee;
+		 }
+
+		 .similargoto{
+		 	background: #ccc; 
+		 	widht:100%;
+		 	text-align:center;
+		 }
+		  .similargoto:hover{
+		 	background: #0a0; 
+		 	color:#fff;
+		 	width:100%;
+		 	height:25px;
+		 	text-align:center;
+		 	line-height:25px;
+		 }
+
+		</style>
+</block>
+
+<!-- 内容模块 -->
+<block name="main">		
+            <div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="__APP__/Home">首页</a></li>
+                                <li class="qc"><a href="javascript:;">闪购</a></li>
+                                <li class="qc"><a href="javascript:;">限时抢</a></li>
+                                <li class="qc"><a href="javascript:;">团购</a></li>
+                                <li class="qc last"><a href="javascript:;">大包装</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+			<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-collection">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">我的收藏</strong> / <small>My&nbsp;Collection</small></div>
+						</div>
+						<hr/>
+
+						<div class="you-like">
+							<div class="s-bar">
+								我的收藏
+								<a class="am-badge am-badge-danger am-round">降价</a>
+								<a class="am-badge am-badge-danger am-round">下架</a>
+							</div>
+							<div class="s-content" id="deleteCollectID">
+
+								<foreach name="collectGood" item="v">
+									<div class="s-item-wrap">
+
+										<div class="s-item">
+											<div class="s-pic">
+												<a href="#" class="s-pic-link">
+													<img width="186px" height="186px" src="__PUBLIC__/{$v.pic_path}" alt="{$v.goods_name}" title="{$v.goods_name}" class="s-pic-img s-guess-item-img">
+												</a>
+											</div>
+
+											<div class="s-info">
+												<div class="s-title"><a  href="__APP__/" title="">{$v.goods_name}</a></div>
+												<div class="s-price-box">
+													<span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">{$v.price}</em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">{$v['price'] * $number}</em></span>
+												</div>
+
+												<div class="s-extra-box">
+													<span class="s-sales">销量：{$v.buynum}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<a href="javascript:;" name="{$v.good_id}" class="deleteColect"><span class="s-sales mystylea">取消收藏</span></a>
+												</div>
+											</div>
+
+											<div class="s-tp">
+												<a href="__APP__/Home/List/list/sid/{$v.second_sort_id}">
+												<dd class="similargoto">找相似</dd></a>
+												<i class="am-icon-shopping-cart"></i>
+											</div>
+
+
+										</div>
+									</div>
+								</foreach>
+
+							</div>
+
+							<div class="am-sm-9">
+								{$show}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="{:U('Home/Person/person')}">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="javascript:;">个人资料</a>
+						<ul>
+							<li> <a href="{:U('Home/Person/infor')}">个人信息</a></li>
+							<li> <a href="{:U('Home/Person/password')}">安全设置</a></li>
+							<li> <a href="{:U('Home/Address/showAddress')}">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的交易</a>
+						<ul>
+							<li><a href="{:U('Home/Order/orders')}">订单管理</a></li>
+							<li> <a href="javascript:;">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的资产</a>
+						<ul>
+							<li> <a href="javascript:;">优惠券 </a></li>
+							<li> <a href="javascript:;">红包</a></li>
+							<li> <a href="javascript:;">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="#">我的小窝</a>
+						<ul>
+							<li class="active"> <a href="{:U('Person/collection')}">收藏</a></li>
+							<li> <a href="javascript:;">足迹</a></li>
+							<li> <a href="{:U('Comment/commentShow')}">评价</a></li>
+							<li> <a href="javascript:;">消息</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</aside>
+		</div>
+
+</block>
+
+
+<block name="javascript">
+	 <script type="text/javascript" src="__PUBLIC__/basic/js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/script.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/basic/js/quick_links.js"></script>
+	<script type="text/javascript">
+
+		$('#deleteCollectID').on('click','.deleteColect',function (){
+
+			var goodid = $(this).attr('name');
+
+			var deteleid = 1;
+
+			$.post(
+
+				'{:U("collection")}',
+
+				{delete:deteleid,goodid:goodid},
+
+				function (data){
+
+					if (data == 0){
+
+						alert('取消收藏失败');
+
+					} else {
+
+						var str = ' ';
+
+						for (var i=0;i<data[1].length;i++){
+
+							str += '<div class="s-item-wrap"><div class="s-item"><div class="s-pic"><a href="#" class="s-pic-link"><img width="186px" height="186px"  src="__PUBLIC__/'+data[1][i].pic_path+'" alt="'+data[1][i].goods_name+'" title="'+data[1][i].goods_name+'" class="s-pic-img s-guess-item-img"></a></div><div class="s-info"><div class="s-title"><a  href="" title="'+data[1][i].goods_name+'">'+data[1][i].goods_name+'</a></div><div class="s-price-box"><span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span></div><div class="s-extra-box"><span class="s-sales">销量：'+data[1][i].buynum+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" name="'+data[1][i].good_id+'" class="deleteColect"><span class="s-sales mystylea">取消收藏</span></a></div></div><div class="s-tp"><a href="__APP__/Home/List/list/sid/'+data[1][i].second_sort_id+'"><dd class="similargoto">找相似</dd></a><i class="am-icon-shopping-cart"></i></div></div></div>';
+
+						}
+
+
+						$('#deleteCollectID').html(str);
+						
+					}
+
+				},
+
+				'json'
+
+				);
+
+		})
+
+	$('#')
+
+
+
+
+
+		$('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+
+	</script>
+</block>

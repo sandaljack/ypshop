@@ -1,0 +1,175 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>评价管理</title></block>
+
+<block name="link">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	
+	<link href="__PUBLIC__/css/personal.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/css/cmstyle.css" rel="stylesheet" type="text/css">
+</block>
+
+<block name="script">
+		
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.2.min.js"></script>
+		<script src="__PUBLIC__/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
+		<script src="__PUBLIC__/AmazeUI-2.4.2/assets/js/amazeui.js"></script>
+</block>
+
+<block name="main">
+
+		<div class="nav-table">
+			<div class="long-title"><span class="all-goods">全部分类</span></div>
+			<div class="nav-cont">
+				<ul>
+					<li class="index"><a href="__APP__/Home">首页</a></li>
+                    <li class="qc"><a href="javascript:;">闪购</a></li>
+                    <li class="qc"><a href="javascript:;">限时抢</a></li>
+                    <li class="qc"><a href="javascript:;">团购</a></li>
+                    <li class="qc last"><a href="javascript:;">大包装</a></li>
+				</ul>
+				<div class="nav-extra">
+					<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+					<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+				</div>
+			</div>
+		</div>
+		<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-comment">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">评价管理</strong> / <small>Manage&nbsp;Comment</small></div>
+						</div>
+						<hr/>
+
+						<div class="am-tabs am-tabs-d2 am-margin" data-am-tabs>
+
+							<ul class="am-avg-sm-2 am-tabs-nav am-nav am-nav-tabs">
+								<li class="am-active"><a href="#tab1">所有评价</a></li>
+								
+
+							</ul>
+
+							<div class="am-tabs-bd">
+								<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+
+									<div class="comment-main">
+										<div class="comment-list">
+											<foreach name="data" item="v">
+											<ul class="item-list">
+
+												
+												<div class="comment-top">
+													<div class="th th-price">
+													<if condition="$v['point'] eq 1 "><td class="td-inner">评价:好评</td></if>
+													<if condition="$v['point'] eq 2 "><td class="td-inner">评价:中评</td></if>
+													<if condition="$v['point'] eq 3 "><td class="td-inner">评价:差评</td></if>
+													
+													</div>
+													<div class="th th-item">
+														<td class="td-inner">商品</td>
+													</div>													
+												</div>
+												<li class="td td-item">
+													<div class="item-pic">
+														<a href="#" class="J_MakePoint">
+															<img src="__PUBLIC__/{$v.pic_path}" class="itempic">
+														</a>
+													</div>
+												</li>
+
+												<li class="td td-comment">
+													<div class="item-title">
+														<div class="item-opinion">好评</div>
+														<div class="item-name">
+															<a href="#">
+																<p class="item-basic-info">{$v.goods_name}</p>
+															</a>
+														</div>
+													</div>
+													<div class="item-comment">
+														{$v.content}
+													</div>
+
+													<div class="item-info">
+														<div>
+															<p class="info-little"><span>颜色：{$v.color}</span> <span>尺码：{$v.size}</span> </p>
+															<p class="info-time">{$v.add_time}</p>
+
+														</div>
+													</div>
+												</li><br>
+
+											</ul>
+											</foreach>
+										</div>
+									</div>
+									
+								</div>
+								
+							</div>
+						</div>
+{$page}
+					</div>
+
+				</div>
+				
+			</div>
+
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="{:U('Home/Person/person')}">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="javascript:;">个人资料</a>
+						<ul>
+							<li> <a href="{:U('Home/Person/infor')}">个人信息</a></li>
+							<li> <a href="{:U('Home/Person/password')}">安全设置</a></li>
+							<li> <a href="{:U('Home/Address/showAddress')}">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的交易</a>
+						<ul>
+							<li><a href="{:U('Home/Order/orders')}">订单管理</a></li>
+							<li> <a href="javascript:;">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的资产</a>
+						<ul>
+							<li> <a href="javascript:;">优惠券 </a></li>
+							<li> <a href="javascript:;">红包</a></li>
+							<li> <a href="javascript:;">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="javascript:;">我的小窝</a>
+						<ul>
+							<li> <a href="{:U('Person/collection')}">收藏</a></li>
+							<li> <a href="javascript:;">足迹</a></li>
+							<li class="active"> <a href="{:U('Comment/commentShow')}">评价</a></li>
+							<li> <a href="javascript:;">消息</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</aside>
+		</div>
+
+</block>
+<block name="javascript">
+	<script>
+		//修改分页 按钮
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+	</script>
+</block>

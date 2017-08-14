@@ -1,0 +1,441 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>商品列表</title></block>
+
+
+<block name="link">
+	
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="__PUBLIC__/css/seastyle.css" rel="stylesheet" type="text/css" />
+</block>
+
+<!-- 内容模块 -->
+<block name="main">
+			<div class="clear"></div>
+			<b class="line"></b>
+           <div class="search">
+			<div class="search-list">
+			<div class="nav-table">
+					   <a href="__APP__/Home/List/list" title="所有商品列表"><div class="long-title"><span class="all-goods">全部分类</span></div></a>
+					   <div class="nav-cont">
+							<ul>
+								<ul>
+								<li class="index"><a href="__APP__/Home">首页</a></li>
+                                <li class="qc"><a href="javascript:;">闪购</a></li>
+                                <li class="qc"><a href="javascript:;">限时抢</a></li>
+                                <li class="qc"><a href="javascript:;">团购</a></li>
+                                <li class="qc last"><a href="javascript:;">大包装</a></li>
+							</ul>
+                              
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+					<div class="am-g am-g-fixed">
+						<div class="am-u-sm-12 am-u-md-12 accurateSearch">
+	                  	<div class="theme-popover">														
+							<div class="searchAbout">
+								<span class="font-pale">相关搜索：</span>
+								<a title="坚果" href="#">坚果</a>
+								<a title="瓜子" href="#">瓜子</a>
+								<a title="鸡腿" href="#">豆干</a>
+
+							</div>
+
+							<ul class="select">
+								<p class="title font-normal">
+									<!-- <span class="fl">松子</span> -->
+									<!-- <span class="total fl">搜索到<strong class="num">997</strong>件相关商品</span> -->
+								</p>
+								<div class="clear"></div>
+								
+
+								<div class="clear"></div>
+																
+								<li class="select-list">
+									<dl id="select1">
+										<dt class="am-badge am-round ">一级分类:</dt>
+										<div class="dd-conent listFirst" id="listFirstends">
+											<dd class="select-all selected"><a href="javascript:;">全部</a></dd>
+
+											<foreach name="listFirst" item="v" >
+												
+												<dd class="select1-type" value="{$v.id}"><a href="javascript:;">{$v.name}</a></dd>
+											</foreach>
+
+										</div>
+									</dl>
+								</li>
+
+
+								<li class="select-list">
+									<dl id="select2">
+										<dt class="am-badge am-round">二级分类:</dt>	
+
+										 <div class="dd-conent" id="listSecondens">
+											<dd class="select-all selected" ><a href="javascript:;">全部</a></dd>
+
+											 <foreach name="listSecond" item="vo" >
+											 	
+											 	<dd class="select2-type" value="{$vo.first_sort_id}"><a href="javascript:;">{$vo.name}</a></dd>
+					
+											 </foreach>
+										</div>
+									</dl>
+								</li>
+					        
+							</ul>
+							<div class="clear"></div>
+                        </div>
+							<div class="search-content">
+								<div class="sort">
+									<li class="first"><a  href="javascript:;" title="销量">销量排序</a></li>
+									<li><a title="价格"   href="javascript:;" >价格优先</a></li>
+									<li class="big"><a    href="javascript:;" title="评价"  >已有评价</a></li>
+								</div>
+
+								<div class="clear"></div>
+
+								<ul id="shopListUl" class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes" id="shopListSeach">
+
+									<foreach name="goodsList" item="vy" >
+
+										<li>
+											<div class="i-pic limit"><a href="__APP__/Home/Detail/Detail/id/{$vy.id}">
+												<img width="218px" title="{$vy.goods_name}" height="218px" src="__PUBLIC__/{$vy.pic_path}"/></a>											
+												<p class="title fl" >{$vy.goods_name|subtext=18}</p>
+												<p class="price fl">
+													<b>¥</b>
+													<strong>{$vy.price}</strong>
+												</p>
+												<p class="number fl">
+													销量：<span>{$vy.buynum}</span>
+												</p>
+											</div>
+										</li>
+									
+									</foreach>
+									
+									
+									
+								</ul>
+							</div>
+
+							<div class="search-side">
+
+								<div class="side-title">
+									商品推荐
+								</div>
+			
+								<foreach name="recommendShop" item="v" >
+
+								<li>
+									<div class="i-pic check" id="recommend">
+										<a href="__APP__/Home/Detail/Detail/id/{$v.id}"><img src="__PUBLIC__/{$v.pic_path}" /></a>
+										
+										<p class="check-title" style="font-size: 12px;" title="{$v.goods_name}">{$v.goods_name|subtext=8}</p>
+										<p class="price fl">
+											<b>¥</b>
+											<strong>{$v.price}</strong>
+										</p>
+										<p class="number fl">
+											销量<span>{$v.buynum}</span>
+										</p>
+									</div>
+								</li>
+		
+								</foreach>
+
+							</div>
+
+							<div class="am-u-sm-6">{$show}</div>
+							
+						
+						</div>
+					</div>
+
+
+		<!--菜单 -->
+		<div class=tip>
+			<div id="sidebar">
+				<div id="wrap">
+					<div id="prof" class="item ">
+						<a href="# ">
+							<span class="setting "></span>
+						</a>
+						<div class="ibar_login_box status_login ">
+							<div class="avatar_box ">
+								<p class="avatar_imgbox "><img src="__PUBLIC__/images/no-img_mid_.jpg " /></p>
+								<ul class="user_info ">
+									<li>用户名: {$session.username}</li>
+									<li>级&nbsp;别普通会员</li>
+								</ul>
+							</div>
+							<div class="login_btnbox ">
+								<a href="javascript:;" class="login_order ">我的订单</a>
+								<a href="javascript:;" class="login_favorite ">我的收藏</a>
+							</div>
+							<i class="icon_arrow_white "></i>
+						</div>
+
+					</div>
+					<div id="shopCart " class="item ">
+						
+							<span class="message "></span>
+						
+						<p>
+						<empty name="session">
+							<a href="{:U('Home/Shopcar/showCar')} "></a>
+						<else />
+							<a href="{:U('Home/Shopcar/shopCar')} "></a>
+						</empty>
+						</p>
+						
+					</div>
+					<div id="asset " class="item ">
+						<a href="javascript:;">
+							<span class="view "></span>
+						</a>
+						<div class="mp_tooltip ">
+							我的资产
+							<i class="icon_arrow_right_black "></i>
+						</div>
+					</div>
+
+					<div id="foot " class="item ">
+						<a href="javascript:; ">
+							<span class="zuji "></span>
+						</a>
+						<div class="mp_tooltip ">
+							我的足迹
+							<i class="icon_arrow_right_black "></i>
+						</div>
+					</div>
+
+					<div id="brand " class="item ">
+						<notempty name="session">
+						<a href="{:U('Person/collection')}">
+							<span class="wdsc "><img src="__PUBLIC__/images/wdsc.png " /></span>
+						</a>
+						<else />
+						<a href="{:U('Login/login')}">
+							<span class="wdsc "><img src="__PUBLIC__/images/wdsc.png " /></span>
+						</a>
+						</notempty>
+						<div class="mp_tooltip ">
+							我的收藏
+							<i class="icon_arrow_right_black "></i>
+						</div>
+					</div>
+
+
+					<div class="quick_toggle ">
+						<li class="qtitem ">
+							<a href="# "><span class="kfzx "></span></a>
+							<div class="mp_tooltip ">客服中心<i class="icon_arrow_right_black "></i></div>
+						</li>
+						<!--二维码 -->
+						<li class="qtitem ">
+							<a href="#none "><span class="mpbtn_qrcode "></span></a>
+							<div class="mp_qrcode " style="display:none; "><img src="__PUBLIC__/images/weixin_code_145.png " /><i class="icon_arrow_white "></i></div>
+						</li>
+						<li class="qtitem ">
+							<a href="#top " data-am-smooth-scroll class="return_top "><span class="top "></span></a>
+						</li>
+					</div>
+
+					<!--回到顶部 -->
+					<div id="quick_links_pop " class="quick_links_pop hide "></div>
+
+				</div>
+
+			</div>
+			<div id="prof-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					我
+				</div>
+			</div>
+			<div id="shopCart-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					购物车
+				</div>
+			</div>
+			<div id="asset-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					资产
+				</div>
+
+				<div class="ia-head-list ">
+					<a href="# " target="_blank " class="pl ">
+						<div class="num ">0</div>
+						<div class="text ">优惠券</div>
+					</a>
+					<a href="# " target="_blank " class="pl ">
+						<div class="num ">0</div>
+						<div class="text ">红包</div>
+					</a>
+					<a href="# " target="_blank " class="pl money ">
+						<div class="num ">￥0</div>
+						<div class="text ">余额</div>
+					</a>
+				</div>
+
+			</div>
+			<div id="foot-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					足迹
+				</div>
+			</div>
+			<div id="brand-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					收藏
+				</div>
+			</div>
+			<div id="broadcast-content " class="nav-content ">
+				<div class="nav-con-close ">
+					<i class="am-icon-angle-right am-icon-fw "></i>
+				</div>
+				<div>
+					充值
+				</div>
+			</div>
+		</div>
+					
+</block>
+
+<block name="javascript">
+
+    <script type="text/javascript" src="__PUBLIC__/basic/js/jquery-1.7.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/script.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/basic/js/quick_links.js"></script>
+
+	<script>
+			window.jQuery || document.write('<script src="basic/js/jquery-1.9.min.js"><\/script>');
+
+			var that;
+
+			$( '.accurateSearch' ).on( 'click','.select1-type',function (){
+
+				that = $(this).attr( 'value' );
+
+				var firstText = $(this).attr( 'value' );
+
+
+				$.post(	
+
+					'{:U("listFirs1")}',
+
+					{first:firstText},
+
+					function ( data ) {
+
+						
+
+						var str = '<dd class="select-all selected" ><a href="javascript:;">全部</a></dd>';
+
+						var shop = ' ';
+
+						for ( var p=0;p<data[0].length;p++ ) {
+							
+							
+							str += '<dd class="select2-type" value="'+data[0][p].id+'"><a href="javascript:;">'+data[0][p].name+'</a></dd>';
+
+						}
+
+						$( '#listSecondens' ).html( str );
+						for (var i=0;i<data[1].length;i++){
+							 shop +='<li><div class="i-pic limit"><a href="__APP__/Home/Detail/Detail/id/'+data[1][i].id+'"><img width="218px" height="218px" src="__PUBLIC__/'+data[1][i].pic_path+'" /></a><p class="title fl">'+data[1][i].goods_name+'</p><p class="price fl"><b>¥</b><strong>'+data[1][i].price+'</strong></p><p class="number fl">销量：<span>'+data[1][i].buynum+'</span></p></div></li>';
+						}
+
+						$('#shopListUl').html( shop );
+
+					},
+
+					'json'
+
+					);
+				
+			});
+
+
+			$( '.accurateSearch' ).on( 'click', '.select2-type',function (){
+
+				var secondid = $(this).attr( 'value' );
+
+				$(this).addClass('selected').siblings().removeClass('selected');
+
+				$.post(	
+
+					'{:U("listSecond1")}',
+
+					{id:secondid},
+
+					function ( data ) {
+
+						var arrayList = ' ';
+						for (var y=0;y<data.length;y++){
+
+							 arrayList +='<li><div class="i-pic limit"><a href="__APP__/Home/Detail/Detail/id/'+data[y].id+'"><img width="218px" height="218px" src="__PUBLIC__/'+data[y].pic_path+'" /></a><p class="title fl">'+data[y].goods_name+'</p><p class="price fl"><b>¥</b><strong>'+data[y].price+'</strong></p><p class="number fl">销量：<span>'+data[y].buynum+'</span></p></div></li>';
+						}
+
+						$('#shopListUl').html(arrayList);
+						
+					},
+
+					'json'
+
+					);
+
+			});
+
+
+		//分页类
+		$('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+
+
+
+
+
+
+
+
+		//综合排序
+		//销量排序
+		//价格优先
+		$('.accurateSearch').on('click','.first' ,function () {
+
+
+			var ko = $('.select1-type').attr('value');
+
+			console.log(ko);
+
+		});
+
+		
+			
+	</script>
+
+	
+	
+
+</block>

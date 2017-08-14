@@ -1,0 +1,221 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>角色管理</title></block>
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">权限管理</a></li>
+                <li><a href="#">角色管理</a></li>
+                <li class="am-active">编辑角色</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 编辑角色
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                             <button id="back" class="am-btn am-btn-primary" style="margin-left:20px">返回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tpl-block">
+
+                    <div class="am-g tpl-amazeui-form">
+                        <div class="tpl-form-body tpl-form-line">
+                            <!--添加商品表单 -->
+                            <form class="am-form am-form-horizontal" method="post" action="{:U('editgroup')}" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="{$group['id']}">
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">角色名字</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="name" id="user-name" placeholder="请输入角色名字" value="{$group['title']}">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">角色描述</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="function" id="user-name" placeholder="请输入角色描述" value="{$group['function']}">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label">状态</label>
+                                    <div class="am-u-sm-9">
+                                        <div class="tpl-switch">
+                                            <input type="checkbox" name="status" class="ios-switch bigswitch tpl-switch-btn" {$group['status']==1?checked:''} value="{$group.status}"/>
+                                            <div class="tpl-switch-btn-view changestatus">
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">设置权限</label>
+                                    <div class="am-u-sm-8 am-u-end ">
+                                        <section data-am-widget="accordion" class="am-accordion am-accordion-default" data-am-accordion='{ "multiple": true }'>                               
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              首页设置
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in ">
+                                              <div class="am-accordion-content">
+                                                <input type="checkbox" id="index" class="allcheckbox"><label for="index" >全选</label><br>
+                                                <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 1"><input id="index{$k}" <in name="v.id" value="$group['rules']">checked</in>   type="checkbox" name="check[]" value="{$v.id}"><label for="index{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                                </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              用户管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="user" type="checkbox" class="allcheckbox"><label for="user" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 2"><input id="user{$k}" <in name="v.id" value="$group['rules']">checked</in>  type="checkbox" name="check[]" value="{$v.id}"><label for="user{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                                </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              分类管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="type" type="checkbox" class="allcheckbox"><label for="type" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 3"><input id="type{$k}" <in name="v.id" value="$group['rules']">checked</in> type="checkbox" name="check[]" value="{$v.id}"><label for="type{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                                </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              商品管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="goods" type="checkbox" class="allcheckbox"><label for="goods" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 4"><input id="goods{$k}" <in name="v.id" value="$group['rules']">checked</in>  type="checkbox" name="check[]" value="{$v.id}"><label for="goods{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                                </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              订单管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="order" type="checkbox" class="allcheckbox"><label for="order" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 5"><input id="order{$k}" <in name="v.id" value="$group['rules']">checked</in>   type="checkbox" name="check[]" value="{$v.id}"><label for="order{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                                </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              权限管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="auth" type="checkbox" class="allcheckbox"><label for="auth" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 6"><input id="auth{$k}" <in name="v.id" value="$group['rules']">checked</in>  type="checkbox" name="check[]" value="{$v.id}"><label for="auth{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                              </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              广告管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="adv" type="checkbox" class="allcheckbox"><label for="adv" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 7"><input id="adv{$k}" <in name="v.id" value="$group['rules']">checked</in>  type="checkbox" name="check[]" value="{$v.id}"><label for="adv{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                              </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                          <dl class="am-accordion-item am-active">
+                                            <dt class="am-accordion-title">
+                                              管理员管理
+                                            </dt>
+                                            <dd class="am-accordion-bd am-collapse am-in">
+                                              <div class="am-accordion-content">
+                                              <input id="admin" type="checkbox" class="allcheckbox"><label for="admin" >全选</label><br>
+                                              <foreach name="rule" item="v" key="k">
+                                                <if condition="$v.classify eq 8"><input id="admin{$k}" <in name="v.id" value="$group['rules']">checked</in>  type="checkbox" name="check[]" value="{$v.id}"><label for="admin{$k}" >{$v.title}</label><span style="margin-right:5px;width:20px"></span></if>
+                                              </foreach>
+                                              </div>
+                                            </dd>
+                                          </dl>
+                                      </section>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                       
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="javascript">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+    //点击返回
+    $('#back').click(function() {
+        location.href = '__APP__/Admin/Authgroup/index';
+    });
+    //获取状态是否启用
+    $('.changestatus').each(function() {
+        $(this).click(function() {
+            if ($(this).siblings('input[name="status"]').attr('value') == '0') {
+                $(this).siblings('input[name="status"]').val('1');
+            } else {
+                $(this).siblings('input[name="status"]').val('0');
+            }   
+        });
+    });
+    //点击全选
+    $('.allcheckbox').each(function() {
+        $(this).click(function() {
+            if ($(this).attr('checked')) {
+                $(this).attr('checked', false);
+                $(this).parent().find('input[name="check[]"]').prop('checked', false).attr('checked', false);
+            } else {
+                $(this).attr('checked', true);
+                $(this).parent().find('input[name="check[]"]').prop('checked', true).attr('checked', true);
+            }
+            
+        });
+    });
+    </script>
+</block>

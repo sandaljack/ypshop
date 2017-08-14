@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homePageUrl="/thinkphp_3.2.3_full/index.php/Home/Index/index" homePageName="回到我的主页"></script>

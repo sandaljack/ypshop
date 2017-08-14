@@ -1,0 +1,107 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>用户修改</title></block>
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="" class="am-icon-home">用户管理</a></li>
+                <li><a href="" class="am-icon-home">用户列表</a></li>
+                <li class="am-active">用户修改</li>
+                
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 用户修改
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                             <button id="back" class="am-btn am-btn-primary" style="margin-left:20px">返回</button>
+                        </div>
+                    </div>
+                </div>
+             <div class="tpl-block">
+
+                    <div class="am-g tpl-amazeui-form">
+                        <div class="tpl-form-body tpl-form-line">
+                            <!--添加商品表单 -->
+                            <form class="am-form am-form-horizontal" method="post" action="{:U('actionUpDate')}">
+                                <br>
+                                <div class="am-form-group">
+                                    <label for="user-name" class="am-u-sm-3 am-form-label">用户名</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="name" id="user-name" value="{$list.username}" disabled >
+                                        <input type="hidden" name="id" value="{$list.id}">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="doc-ipt-pwd-2" class="am-u-sm-3 am-form-label">密　码：</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="password"  placeholder="不填写则用原来的密码">
+                                        <!-- <small>没有密码什么都干不了</small> -->
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label for="doc-ipt-pwd-2" class="am-u-sm-3 am-form-label">确认密码：</label>
+                                    <div class="am-u-sm-5 am-u-end">
+                                        <input type="text" name="repassword" id="" placeholder="不填写则用原来的密码">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="user-intro" class="am-u-sm-3 am-form-label">状态</label>
+                                    <div class="am-u-sm-9">
+                                        <div class="tpl-switch">
+                                            <input type="checkbox" name="status" class="ios-switch bigswitch tpl-switch-btn" {$list['status']==2?checked:''} value="{$list.status}"/>
+                                            <div class="tpl-switch-btn-view changestatus">
+                                                <div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                       
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</block>
+<block name="javascript">
+        <script src="__PUBLIC__/js/echarts.min.js"></script>
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/amazeui.min.js"></script>
+        <script src="__PUBLIC__/js/iscroll.js"></script>
+        <script src="__PUBLIC__/js/app.js"></script>
+
+      
+        <script>
+            //点击返回
+            $('#back').click(function() {
+                location.href = '__APP__/Admin/User/index';
+            });
+
+            //获取状态是否启用
+            $('.changestatus').each(function() {
+                $(this).click(function() {
+                    if ($(this).siblings('input[name="status"]').attr('value') == 1) {
+                        $(this).siblings('input[name="status"]').val(2);
+                    } else {
+                        $(this).siblings('input[name="status"]').val(1);
+                    }   
+                });
+            });
+        </script>
+</block>

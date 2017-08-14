@@ -1,0 +1,163 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>订单详情</title></block>
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">订单管理</a></li>
+                <li class="am-active">订单详情</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 订单详情
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                               <button id="back" class="am-btn am-btn-primary" style="margin-left:20px">返回</button> 
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    订单编号: {$orders.orders_num}
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="tpl-table-images">
+                            <div class="am-u-sm-12 am-u-md-6 am-u-lg-4">
+                                <div class="tpl-table-images-content">
+                                    <div class="tpl-table-images-content-i-time">
+
+                                    下单时间：{$orders.addtime}  </div>
+                                    <div class="tpl-i-title">
+                                        收货信息：<br>
+                                          收货人：{$address.buyname} <br>
+                                          手机：{$address.phone} <br>
+                                          地址： {$address.province} {$address.city} {$address.area} {$address.town} {$address.detail}
+                                    </div>
+                                    <a href="javascript:;" class="tpl-table-images-content-i">
+                                        <div class="tpl-table-images-content-i-info">
+                                            <span class="ico">
+                                   
+                                 </span>
+
+                                        </div>
+                                        <span class="tpl-table-images-content-i-shadow"></span>
+                                        
+                                    </a>
+                                    <div class="tpl-table-images-content-block">
+                                        <div class="tpl-i-font">
+
+                                        </div>
+                                        <div class="tpl-i-more">
+                                            <ul>
+                                                <li><span class=" am-text-warning">留言：{$orders.buymsg}</span></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs tpl-edit-content-btn">
+                                                <if condition="$orders['status'] eq 1 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger">未付款</button>
+                                                </if>
+                                                <if condition="$orders['status'] eq 2 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-warning">已付款</button>
+                                                </if>
+                                                <if condition="$orders['status'] eq 3 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-secondary">已发货</button>
+                                                </if>
+                                                <if condition="$orders['status'] eq 4 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-success">交易完成</button>
+                                                </if>
+                                                <if condition="$orders['status'] eq 6 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-success">交易完成</button>
+                                                </if>
+                                                <if condition="$orders['status'] eq 5 ">
+                                                <button type="button" class="am-btn am-btn-default am-btn-danger">取消交易</button>
+                                                </if>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-name">商品图片</th>
+
+                                            <th class="table-name">商品信息</th>
+                                            <th>颜色</th>
+                                            <th>尺寸</th>
+                                            <th class="table-name">单价</th>
+                                            
+                                            <th class="table-date am-hide-sm-only">数量</th>
+
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <foreach name="goods" item="v">
+                                        <tr>
+                                            <td>{$v.goods_id}</td>
+                                            <td><img src="__PUBLIC__/{$v.pic_path}" style="width:80px;height:80px" alt=""></td>
+                                            <td class="am-hide-sm-only">{$v.goods_name}</td>
+                                            <td>{$v.color}</td>
+                                            <td>{$v.size}</td>
+                                            <td>{$v.price}</td>
+                                            <td>{$v.buynum}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only deluser" uid="{$v.id}" gid="{$group.id}"><span class="am-icon-trash-o"></span> 删除</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                                {$page}
+                                <hr>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="javascript">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+         //点击返回
+        $('#back').click(function() {
+            location.href = '__APP__/Admin/Orders/index';
+        });
+
+    </script>
+</block>

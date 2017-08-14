@@ -1,0 +1,120 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>角色管理</title></block>
+<!-- 内容模块 -->
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">权限管理</a></li>
+                <li><a href="#">角色管理</a></li>
+                <li class="am-active">成员管理</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 成员管理
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                               <button id="back" class="am-btn am-btn-primary" style="margin-left:20px">返回</button> 
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-6">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <button id="adduser" type="button" class="am-btn am-btn-default am-btn-success" gid="{$group.id}"><span class="am-icon-plus" ></span> 添加成员</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-name">用户名</th>
+
+                                            <th class="table-date am-hide-sm-only">所属组</th>
+                                            <th class="table-set">操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <foreach name="userlist" item="v">
+                                        <tr>
+                                            <td>{$v.id}</td>
+                                            <td>{$v.username}</td>
+                                            <td class="am-hide-sm-only">{$group.title}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only deluser" uid="{$v.id}" gid="{$group.id}"><span class="am-icon-trash-o"></span> 删除</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                                {$page}
+                                <hr>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="javascript">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+        //点击添加成员
+        $('#adduser').click(function() {
+            var id = $(this).attr('gid');
+            location.href = '__APP__/Admin/Authgroup/adduser/id/'+id;
+        });
+          //点击删除
+        $('.deluser').each(function() {
+            var that = $(this);
+            $(this).click(function () {
+                var uid = $(this).attr('uid');
+                var gid = $(this).attr('gid');
+                $.post(
+                    '{:U("Admin/Authgroup/deluser")}',
+                    {gid:gid, uid:uid},
+                    function (data) {
+                        if (data == 1) {
+                            that.parent().parent().parent().parent().remove();
+                        } else {
+                            alert('抱歉！没有权限访问该功能');
+                        }
+                    },
+                    'json'
+                );
+            });
+
+        });
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+         //点击返回
+        $('#back').click(function() {
+            location.href = '__APP__/Admin/Authgroup/index';
+        });
+
+    </script>
+</block>

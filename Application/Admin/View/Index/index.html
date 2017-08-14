@@ -1,0 +1,188 @@
+<extend name="Index:base" />
+
+<block name="title"><title>有品后台</title></block>
+
+<block name="link">
+
+</block>
+
+<block name="main">
+        <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+                有品后台展示页
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li class="am-active">后台展示页</li>
+            </ol>
+            <div class="row">
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat blue">
+                        <div class="visual">
+                            <i class="am-icon-comments-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">{$allData.alltotal}元</div>
+                            <div class="desc">销售总金额</div>
+                        </div>
+                        <a class="more" href="#"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat red">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">{$allData.number}单</div>
+                            <div class="desc">订单数</div>
+                        </div>
+                        <a class="more" href="__APP__/Admin/Orders/index"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat green">
+                        <div class="visual">
+                            <i class="am-icon-comments-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">{$allData.goodsnumber}件</div>
+                            <div class="desc">库存商品</div>
+                        </div>
+                        <a class="more" href="__APP__/Admin/Showgoods/showgood"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+                <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                    <div class="dashboard-stat purple">
+                        <div class="visual">
+                            <i class="am-icon-bar-chart-o"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">{$allData.usernumber}人</div>
+                            <div class="desc">注册用户数量</div>
+                        </div>
+                        <a class="more" href="__APP__/Admin/User/index"> 查看更多
+                    <i class="m-icon-swapright m-icon-white"></i>
+                </a>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="am-u-md-6 am-u-sm-12 row-mb">
+                    <div class="tpl-portlet">
+                        <div class="tpl-portlet-title">
+                            <div class="tpl-caption font-green ">
+                                <i class="am-icon-cloud-download"></i>
+                                <span>商品好评表</span>
+                            </div>
+                            <div class="actions">
+                                <ul class="actions-btn">
+                                    <li class="green">销售量</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--此部分数据请在 js文件夹下中的 app.js 中的 “百度图表A” 处修改数据 插件使用的是 百度echarts-->
+                        <div class="tpl-scrollable">
+                            <table class="am-table tpl-table">
+                                <thead>
+                                    <tr class="tpl-table-uppercase">
+                                        <th class="am-md-text-center">编号</th>
+                                        <th class="am-md-text-center">图片</th>
+                                        <th class="am-md-text-center">名字</th>
+                                        <th class="am-md-text-center">购买量</th>
+                                        <th class="am-md-text-center">状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <foreach name="goods" key="k" item="v">
+                                        <tr>
+                                            <td class="font-green bold am-md-text-center">{$k+1}</td>
+                                            <td class="am-md-text-center">
+                                                <img src="__PUBLIC__/{$v.pic_path}" alt="" class="user-pic">
+                                            </td>
+                                            <td class="am-md-text-center" title="{$v.goods_name}">{$v.goods_name|subtext=7}</td>
+                                            <td class="am-md-text-center">{$v.buynum}</td>
+                                            <td class="font-green bold am-md-text-center">
+                                                <if condition="$v.goods_status eq 1">已上架
+                                                <elseif condition="$v.goods_status eq 0"/>已下架
+                                                <else/>在售中
+                                                </if>
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-u-md-6 am-u-sm-12 row-mb">
+                    <div class="tpl-portlet">
+                        <div class="tpl-portlet-title">
+                            <div class="tpl-caption font-red ">
+                                <i class="am-icon-bar-chart"></i>
+                                <span>会员列表</span>
+                            </div>
+                            <div class="actions">
+                                <ul class="actions-btn">
+                                    <li class="red-on">注册会员</li>
+                               
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tpl-scrollable">
+                            <table class="am-table tpl-table">
+                                <thead>
+                                    <tr class="tpl-table-uppercase">
+                                        <th class="am-md-text-center">编号</th>
+                                        <th class="am-md-text-center">用户名字</th>
+                                        <th class="am-md-text-center">状态</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <foreach name="users" key="k" item="v">
+                                        <tr>
+                                            <td class="font-red bold am-md-text-center">{$k+1}</td>
+                                            <td class="am-md-text-center" title="{$v.username}">{$v.username|subtext=7}</td>
+                                            <td class="font-red bold am-md-text-center">
+                                                <if condition="$v.status eq 2">正常
+                                                <else/>禁用
+                                                </if>
+                                            </td>
+                                        </tr>
+                                    </foreach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </div>
+
+    </div>
+</block>
+
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+
+    <script>
+
+    </script>
+</block>

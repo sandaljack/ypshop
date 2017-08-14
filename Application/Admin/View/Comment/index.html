@@ -1,0 +1,177 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>订单管理</title></block>
+<!-- 内容模块 -->
+<block name="main">
+    <div class="tpl-content-wrapper">
+            <div class="tpl-content-page-title">
+            </div>
+            <ol class="am-breadcrumb">
+                <li><a href="#" class="am-icon-home">首页</a></li>
+                <li><a href="#">订单管理</a></li>
+                <li class="am-active">评价管理</li>
+            </ol>
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span> 评价管理
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                 </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+                    <div class="am-g">
+                        <div class="am-u-sm-12 am-u-md-5">
+                            <div class="am-btn-toolbar">
+                                <div class="am-btn-group am-btn-group-xs">
+                                    <a href="__APP__/Admin/Comment/index"><button type="button" class="am-btn am-btn-default am-btn-success am-btn-xs"><span class="am-icon-plus"></span>清空搜索条件</button></a>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="get" action="{:U('Comment/index')}">
+                            <div class="am-u-sm-12 am-u-md-3">
+                                <span style="margin-left:160px"></span>
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-2">
+                                <div id="firstsort" class="am-form-group">
+                                    <select  name="point" style="margin-left:50px">
+                                        <option value="" selected>--请选择--</option>
+                                        <option <?=@$_GET['point']==1?'selected':''?> value="1">好评</option>
+                                        <option <?=@$_GET['point']==2?'selected':''?> value="2">中评</option>
+                                        <option <?=@$_GET['point']==3?'selected':''?> value="3">差评</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div class="am-u-sm-12 am-u-md-2">
+                                <div class="am-input-group am-input-group-sm">
+                                    <!-- <input type="text" name="orders_num" placeholder="请输入要搜索的用户" class="am-form-field"> -->
+                                    <span class="am-input-group-btn">
+                                        <button class="am-btn  am-btn-default am-btn-success tpl-am-btn-success am-icon-search"></button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-id">ID</th>
+                                            <th class="table-name">用户id</th>
+                                            <th>商品图片</th>
+                                            <th class="table-type">商品名</th>
+                                            <th>颜色</th>
+
+                                            <th class="table-author am-hide-sm-only">尺寸</th>
+                                            <th>评分</th>
+                                            <th>评价内容</th>
+
+                                            <th class="table-set">操作</th>
+                                            <th>回复内容</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <foreach name="data" item="v">
+                                        <tr>
+                                            <td class="rid">{$v.id}</td>
+                                            <td>{$v.user_id}</td>
+                                            <td><img src="__PUBLIC__/{$v.pic_path}" style="width:30px;height:30px" alt=""></td>
+                                            <td>
+                                                {$v.goods_name}
+                                            </td>
+                                            <td>{$v.color}</td>
+                                            <td>{$v.size}</td>
+                                            <if condition="$v['point'] eq 1 ">
+                                                <td class="am-hide-sm-only status">好评</td>
+                                            </if>
+                                            <if condition="$v['point'] eq 2 ">
+                                                <td class="am-hide-sm-only status">中评</td>
+                                            </if>
+                                            <if condition="$v['point'] eq 3 ">
+                                                <td class="am-hide-sm-only status">差评</td>
+                                            </if>
+                                            <td>{$v.content}</td>
+                                            <td>
+                                                <div class="am-btn-toolbar">
+                                                    <div class="am-btn-group am-btn-group-xs">
+                                                        <button class="am-btn am-btn-default am-btn-xs am-text-secondary resComment" cid="{$v.id}"><span class="am-icon-pencil-square-o" ></span> 回复评价</button>
+                                                       <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only delComment" cid="{$v.id}"><span class="am-icon-trash-o"></span> 删除</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{$v.rescom}</td>
+                                        </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                                {$page}
+                                <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+        </div>
+    </div>
+</block>
+<!-- javascript模块 -->
+<block name="javascript">
+    <script src="__PUBLIC__/js/echarts.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/iscroll.js"></script>
+    <script src="__PUBLIC__/js/app.js"></script>
+    <script>
+
+        //点击编辑
+        $('.resComment').each(function() {
+            $(this).click(function () {
+                var id = $(this).attr('cid');
+                location.href = '__APP__/Admin/Comment/resComment/cid/'+id;
+            });
+        });
+
+        //点击删除
+        $('.delComment').each(function() {
+            var that = $(this);
+            $(this).click(function () {
+                var id = $(this).attr('cid');
+                $.post(
+                    '{:U("delComment")}',
+                    {id:id},
+                    function (data) {
+                        if (data == 1) {
+                            that.parent().parent().parent().parent().remove();
+                        } 
+                    },
+                    'json'
+                );
+            });
+
+        });
+        //显示分页
+        $('.current').wrap('<li></li>').parent().siblings().wrap('<li></li>').parent().parent().wrapInner('<ul class="am-pagination tpl-pagination"></ul>').wrapInner('<div class="am-fr"></div>').wrapInner('<div class="am-cf"></div>');
+
+        
+      
+    </script>
+</block> 
+
+    
+
+
+
+
+
+        
+
+
+    
+    

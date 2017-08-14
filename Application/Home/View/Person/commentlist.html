@@ -1,0 +1,206 @@
+<extend name="Index:base" />
+<!-- title模块 -->
+<block name="title"><title>发表评论</title></block>
+
+<block name="link">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/basic/css/demo.css" rel="stylesheet" type="text/css" />
+	
+	<link href="__PUBLIC__/css/personal.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/css/appstyle.css" rel="stylesheet" type="text/css">
+</block>
+
+<block name="script">
+		
+		<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.2.min.js"></script>
+</block>
+
+<block name="main">
+
+            <div class="nav-table">
+					   <div class="long-title"><span class="all-goods">全部分类</span></div>
+					   <div class="nav-cont">
+							<ul>
+								<li class="index"><a href="__APP__/Home">首页</a></li>
+                                <li class="qc"><a href="javascript:;">闪购</a></li>
+                                <li class="qc"><a href="javascript:;">限时抢</a></li>
+                                <li class="qc"><a href="javascript:;">团购</a></li>
+                                <li class="qc last"><a href="javascript:;">大包装</a></li>
+							</ul>
+						    <div class="nav-extra">
+						    	<i class="am-icon-user-secret am-icon-md nav-user"></i><b></b>我的福利
+						    	<i class="am-icon-angle-right" style="padding-left: 10px;"></i>
+						    </div>
+						</div>
+			</div>
+			<b class="line"></b>
+		<div class="center">
+			<div class="col-main">
+				<div class="main-wrap">
+
+					<div class="user-comment">
+						<!--标题 -->
+						<div class="am-cf am-padding">
+							<div class="am-fl am-cf"><strong class="am-text-danger am-text-lg">发表评论</strong> / <small>Make&nbsp;Comments</small></div>
+						</div>
+						<hr/>
+
+						<div class="comment-main" oid="{$oid}" uid="{$session.id}">
+							<foreach name="goods" item="v">
+							<div class="comment-list allpoint" gid="{$v.goods_id}" point="1" size="{$v.size}" color="{$v.color}">
+								<div class="item-pic">
+									<a href="#" class="J_MakePoint">
+										<img src="__PUBLIC__/{$v.pic_path}" class="itempic">
+									</a>
+								</div>
+
+								<div class="item-title">
+									<div class="item-name">
+										<a href="#">
+											<p class="item-basic-info">{$v.goods_name}</p>
+										</a>
+									</div>
+									<div class="item-info" >
+										<div class="info-little">
+											<span>颜色：{$v.color}</span>
+											<span>尺寸：{$v.size}</span>
+										</div>									
+									</div>
+								</div>
+								<div class="clear"></div>
+								<div class="item-comment">
+									<textarea class="text" placeholder="请写下对宝贝的感受吧，对他人帮助很大哦！"></textarea>
+								</div>
+								<div class="item-opinion point" >
+									<li class="good"><i class="op1"></i>好评</li>
+									<li class="middle"><i class="op2"></i>中评</li>
+									<li class="bad"><i class="op3"></i>差评</li>
+								</div>
+							</div>
+							</foreach>					
+								<div class="info-btn">
+									<div class="am-btn am-btn-danger sendcom">发表评论</div>
+								</div>							
+									
+					
+												
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+			<aside class="menu">
+				<ul>
+					<li class="person">
+						<a href="{:U('Home/Person/person')}">个人中心</a>
+					</li>
+					<li class="person">
+						<a href="javascript:;">个人资料</a>
+						<ul>
+							<li> <a href="{:U('Home/Person/infor')}">个人信息</a></li>
+							<li> <a href="{:U('Home/Person/password')}">安全设置</a></li>
+							<li> <a href="{:U('Home/Address/showAddress')}">收货地址</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的交易</a>
+						<ul>
+							<li><a href="{:U('Home/Order/orders')}">订单管理</a></li>
+							<li> <a href="javascript:;">退款售后</a></li>
+						</ul>
+					</li>
+					<li class="person">
+						<a href="javascript:;">我的资产</a>
+						<ul>
+							<li> <a href="javascript:;">优惠券 </a></li>
+							<li> <a href="javascript:;">红包</a></li>
+							<li> <a href="javascript:;">账单明细</a></li>
+						</ul>
+					</li>
+
+					<li class="person">
+						<a href="javascript:;">我的小窝</a>
+						<ul>
+							<li > <a href="{:U('Person/collection')}">收藏</a></li>
+							<li> <a href="javascript:;">足迹</a></li>
+							<li class="active"> <a href="{:U('Comment/commentShow')}">评价</a></li>
+							<li> <a href="javascript:;">消息</a></li>
+						</ul>
+					</li>
+
+				</ul>
+
+			</aside>
+		</div>
+
+</block>
+
+<block name="javascript">
+	<script>
+
+		$(document).ready(function() {
+			$(".comment-list .item-opinion li").click(function() {	
+				$(this).prevAll().children('i').removeClass("active");
+				$(this).nextAll().children('i').removeClass("active");
+				$(this).children('i').addClass("active");
+			});
+	     })
+
+
+		//点击评价
+		$('.good').each(function() {
+			$(this).click(function() {
+				$(this).parent().parent().attr('point', 1);
+			});
+		});
+
+		$('.middle').each(function() {
+			$(this).click(function() {
+				$(this).parent().parent().attr('point', 2);
+			});
+		});
+
+		$('.bad').each(function() {
+			$(this).click(function() {
+				$(this).parent().parent().attr('point', 3);
+			});
+		});
+
+
+		//发表评论
+		var gid = '';
+		var color = '';
+		var size = '';
+		var point = '';
+		var com = '';
+		var text = '';
+		$('.sendcom').click(function() {
+			var uid = $('.comment-main').attr('uid');
+			var oid = $('.comment-main').attr('oid');
+			$('.comment-list').each(function() {
+				gid = $(this).attr('gid')+','+gid;
+				color = $(this).attr('color')+','+color;
+				size = $(this).attr('size')+','+size;
+				point = $(this).attr('point')+','+point;
+				text = $(this).find('.text').val()+','+text;
+
+			});
+
+			$.post(
+				'{:U("Comment/commentGoods")}',
+				{gid:gid, color:color, size:size, point:point, text:text, oid:oid, uid:uid},
+				function (data) {
+					if (data == 1) {
+						location.href = "__APP__/Home/Comment/successCom/oid/"+oid;
+					}
+				},
+				'json'
+			);
+			
+		});
+	</script>
+</block>
