@@ -286,29 +286,36 @@ class PersonController extends CommonController
    
 
 
-    //收藏
+    /**
+     * [collection 收藏夹]
+     * @return [type] [description]
+     */
     public function collection()
     {
-
 
          //用户的ID
         $user =  session('homeInfo.id');
 
-        
+        $difference = I('post.difference');
+
+        //商品的状态
         $status = 2;
+
+        //商品ID
         $goodid = I('post.goodid');
 
         //分页的count的条件
         $where['user_id'] = $user;
 
-        //接收删除收藏的id
+        //删除收藏的用户id
         $deteteCId = I('post.delete');
 
         //删除数据条件
         $deleteDataWhere = ['user_id'=>$user,'good_id'=>$goodid];
 
+
         //判断是第一次进入，还是删除收藏商品
-        if ( $deteteCId ){
+        if ( $goodid ){
 
              $bool = M('collect')->where($deleteDataWhere)->delete();
 
@@ -323,14 +330,36 @@ class PersonController extends CommonController
                 // 分页显示输出
                 $show  = $Page->show();
 
-                //得到分页 + 数据
-                $collectGood = M('collect c')->field('c.good_id,g.id,g.first_sort_id,g.second_sort_id,g.goods_name,g.goods_status,g.pic_path,g.buynum,p.price')
-                                           ->join('yp_goods g on c.good_id = g.id')
-                                           ->join('yp_goods_price p on p.goods_id = c.good_id')
-                                           ->where("c.user_id=%d and g.goods_status=%d",$user,$status)
-                                           ->limit($Page->firstRow.','.$Page->listRows)
-                                           ->select();
+                 $collectGoodField = ['c.good_id','g.id','g.first_sort_id','g.second_sort_id','g.goods_name','g.goods_status','g.pic_path'];
 
+                //得到分页 + 数据
+                $collectGood = M('collect c')->field($collectGoodField)
+                                             ->join('yp_goods g on c.good_id = g.id')
+                                             ->where("c.user_id=%d and g.goods_status=%d",$user,$status)
+                                             ->limit($Page->firstRow.','.$Page->listRows)
+                                             ->select();
+
+                $this->assign('show',$show);
+
+           
+
+                //查出每个商品的价格
+                foreach ($collectGood as $key=>$v){
+
+                    //得到价格
+                    $price_goods = M('goods_price')->field('price')->where($v['good_id'])->find();
+
+                    //得到库存
+                    $store_goods = M('goods_price')->field('store')->where($v['good_id'])->find();
+
+                    //将价格新增到数组里面
+                    $collectGood[$key]['price'] =  $price_goods['price'];
+
+                    //将库存新增到数组里面
+                    $collectGood[$key]['store'] =  $store_goods['store'];
+
+                }
+                    
                 //这个值用来算价格的 原价
                 $number = 1.2;
 
@@ -338,16 +367,18 @@ class PersonController extends CommonController
                 
                 $this->ajaxreturn($array);  
 
+                // dump($collectGood);
+
              } else {
 
                 $data = 0;
 
 
-
-
                 $this->ajaxreturn($data);  
              }
+              
              $this->ajaxreturn($bool);  
+
 
         } else {
 
@@ -361,15 +392,37 @@ class PersonController extends CommonController
             // 分页显示输出
             $show  = $Page->show();
 
+            $collectGoodField = ['c.good_id','g.id','g.first_sort_id','g.second_sort_id','g.goods_name','g.goods_status','g.pic_path'];
+
             //得到分页 + 数据
-            $collectGood = M('collect c')->field('c.good_id,g.id,g.first_sort_id,g.second_sort_id,g.goods_name,g.goods_status,g.pic_path,g.buynum,p.price')
-                                       ->join('yp_goods g on c.good_id = g.id')
-                                       ->join('yp_goods_price p on p.goods_id = c.good_id')
-                                       ->where("c.user_id=%d and g.goods_status=%d",$user,$status)
-                                       ->limit($Page->firstRow.','.$Page->listRows)
-                                       ->select();
+            $collectGood = M('collect c')->field($collectGoodField)
+                                         ->join('yp_goods g on c.good_id = g.id')
+                                         ->where("c.user_id=%d and g.goods_status=%d",$user,$status)
+                                         ->limit($Page->firstRow.','.$Page->listRows)
+                                         ->select();
 
             $this->assign('show',$show);
+
+           
+
+            //查出每个商品的价格
+            foreach ($collectGood as $key=>$v){
+
+                //得到价格
+                $price_goods = M('goods_price')->field('price')->where($v['good_id'])->find();
+
+                //得到库存
+                $store_goods = M('goods_price')->field('store')->where($v['good_id'])->find();
+
+                //将价格新增到数组里面
+                $collectGood[$key]['price'] =  $price_goods['price'];
+
+                //将库存新增到数组里面
+                $collectGood[$key]['store'] =  $store_goods['store'];
+            }
+
+           
+// dump($collectGood);
 
             //这个值用来算价格的 原价
             $number = 1.2;
@@ -379,7 +432,9 @@ class PersonController extends CommonController
             $this->assign('number',$number);
 
             $this->assign('collectGood',$collectGood);
+
             $flink = M('friendlink')->select();
+
             $this->assign('link', $flink);
 
             $this->display('Person/collection');

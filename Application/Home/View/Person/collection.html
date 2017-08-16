@@ -92,7 +92,7 @@
 												</div>
 
 												<div class="s-extra-box">
-													<span class="s-sales">销量：{$v.buynum}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													<span class="s-sales">库存：{$v.store}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 													<a href="javascript:;" name="{$v.good_id}" class="deleteColect"><span class="s-sales mystylea">取消收藏</span></a>
 												</div>
 											</div>
@@ -174,13 +174,15 @@
 
 			var goodid = $(this).attr('name');
 
-			var deteleid = 1;
+			
+
+			var difference = 'delete';
 
 			$.post(
 
 				'{:U("collection")}',
 
-				{delete:deteleid,goodid:goodid},
+				{goodid:goodid,difference:difference},
 
 				function (data){
 
@@ -194,7 +196,7 @@
 
 						for (var i=0;i<data[1].length;i++){
 
-							str += '<div class="s-item-wrap"><div class="s-item"><div class="s-pic"><a href="#" class="s-pic-link"><img width="186px" height="186px"  src="__PUBLIC__/'+data[1][i].pic_path+'" alt="'+data[1][i].goods_name+'" title="'+data[1][i].goods_name+'" class="s-pic-img s-guess-item-img"></a></div><div class="s-info"><div class="s-title"><a  href="" title="'+data[1][i].goods_name+'">'+data[1][i].goods_name+'</a></div><div class="s-price-box"><span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span></div><div class="s-extra-box"><span class="s-sales">销量：'+data[1][i].buynum+'</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" name="'+data[1][i].good_id+'" class="deleteColect"><span class="s-sales mystylea">取消收藏</span></a></div></div><div class="s-tp"><a href="__APP__/Home/List/list/sid/'+data[1][i].second_sort_id+'"><dd class="similargoto">找相似</dd></a><i class="am-icon-shopping-cart"></i></div></div></div>';
+							str += '<div class="s-item-wrap"><div class="s-item"><div class="s-pic"><a href="#" class="s-pic-link"><img width="186px" height="186px"  src="__PUBLIC__/'+data[1][i].pic_path+'" alt="'+data[1][i].goods_name+'" title="'+data[1][i].goods_name+'" class="s-pic-img s-guess-item-img"></a></div><div class="s-info"><div class="s-title"><a  href="" title="'+data[1][i].goods_name+'">'+data[1][i].goods_name+'</a></div><div class="s-price-box"><span class="s-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span><span class="s-history-price"><em class="s-price-sign">¥</em><em class="s-value">'+data[1][i].price+'</em></span></div><div class="s-extra-box"><span class="s-sales">库存：'+data[1][i].store+'</span><a href="javascript:;" name="'+data[1][i].good_id+'" class="deleteColect"><span class="s-sales mystylea">取消收藏</span></a></div></div><div class="s-tp"><a href="__APP__/Home/List/list/sid/'+data[1][i].second_sort_id+'"><dd class="similargoto">找相似</dd></a><i class="am-icon-shopping-cart"></i></div></div></div>';
 
 						}
 
